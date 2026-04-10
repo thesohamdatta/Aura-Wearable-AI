@@ -6,11 +6,11 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/license-MIT-black?style=flat-square" />
-  <img src="https://img.shields.io/badge/platform-ESP32--S3-orange?style=flat-square" />
-  <img src="https://img.shields.io/badge/battery-12h-brightgreen?style=flat-square" />
-  <img src="https://img.shields.io/badge/weight-45g-blue?style=flat-square" />
-  <img src="https://img.shields.io/badge/cost-$70-purple?style=flat-square" />
+  <img src="https://img.shields.io/badge/license-MIT-black?style=flat-square" alt="MIT License" />
+  <img src="https://img.shields.io/badge/platform-ESP32--S3-orange?style=flat-square" alt="ESP32-S3 Platform" />
+  <img src="https://img.shields.io/badge/battery-12h-brightgreen?style=flat-square" alt="12 Hour Battery" />
+  <img src="https://img.shields.io/badge/weight-45g-blue?style=flat-square" alt="45 Gram Weight" />
+  <img src="https://img.shields.io/badge/cost-$70-purple?style=flat-square" alt="70 Dollar Cost" />
 </p>
 
 <p align="center">
@@ -36,7 +36,7 @@ Aura is a wearable memory assistant. You can wear it as a pendant, clip, microph
 ```text
 "Where did I park?"               -> Aura knows.
 "What did mom ask me to buy?"     -> Milk, eggs, and whatever else you forgot.
-"Did I take my meds this morning?"-> Yes. Relax.
+"Did I take my meds this morning?" -> Yes. Relax.
 ```
 
 No screen. No friction. Less distraction.
@@ -49,8 +49,6 @@ No screen. No friction. Less distraction.
   <img src="https://github.com/user-attachments/assets/877e66fb-ac78-4f53-8ce2-252a449bdf52" width="75%" alt="Hardware diagram" />
 </p>
 
-<div align="center">
-
 | Component | Spec | Role |
 |---|---|---|
 | **XIAO ESP32-S3 Sense** | Dual-core 240MHz, 8MB PSRAM | Main controller |
@@ -59,8 +57,6 @@ No screen. No friction. Less distraction.
 | **LiPo Battery Pack** | 400mAh + 200mAh | Portable power |
 | **3D-Printed Enclosure** | PLA/PETG | Wearable housing |
 | **30 AWG Wires** | Flexible, ultra-thin | Internal wiring |
-
-</div>
 
 > **Estimated BOM:** ~$30 | **Weight:** ~45g | **Battery life:** 5 to 8 hours
 
@@ -72,8 +68,6 @@ No screen. No friction. Less distraction.
   <img src="https://github.com/user-attachments/assets/b6ac55a4-0b20-4d09-aec3-f96c68d22611" width="75%" alt="Software stack" />
 </p>
 
-<div align="center">
-
 | Layer | Technology | Purpose |
 |---|---|---|
 | **Firmware** | C++, Arduino, ESP-IDF | Device control, capture, BLE, Wi-Fi |
@@ -81,8 +75,6 @@ No screen. No friction. Less distraction.
 | **Backend API** | Python 3.11, FastAPI | Processing, routing, storage |
 | **Database** | Firebase, Pinecone | Memories and vector search |
 | **Communication** | BLE 5.0, Wi-Fi 802.11n | Device to app to cloud |
-
-</div>
 
 ---
 
@@ -98,8 +90,6 @@ Audio -> Transcription -> LLM processing -> Memory + Search
 Image -> Vision model -> /
 ```
 
-<div align="center">
-
 | Provider | Role | Mode |
 |---|---|---|
 | **Groq / Llama** | Real-time transcription and reasoning | Cloud, fast |
@@ -107,8 +97,6 @@ Image -> Vision model -> /
 | **Ollama** | Fully local inference | Local, private |
 | **Deepgram** | Streaming transcription | Cloud, real-time |
 | **Whisper** | Offline fallback | Local, offline |
-
-</div>
 
 If you do not want cloud inference, you can run the stack locally with Ollama.
 
@@ -139,10 +127,6 @@ python main.py
 
 ## Usage
 
-<p align="center">
-  <img src="./assets/app-walkthrough.gif" width="60%" alt="App walkthrough" />
-</p>
-
 1. Wear it.
 2. Let Aura capture in the background.
 3. Ask questions in the app.
@@ -150,16 +134,12 @@ python main.py
 
 **LED status**
 
-<div align="center">
-
 | Light | Meaning |
 |---|---|
 | Green | Recording active |
 | Blue | Syncing to app |
 | Yellow | Low battery |
 | Off | Standby / idle |
-
-</div>
 
 ---
 
@@ -192,8 +172,6 @@ Built by people who believe wearable AI should be open, affordable, and under yo
 
 ---
 
-<sub>
-
-**Disclaimer:** This project was developed with help from Claude Code, Antigravity, and Based Hardware (OMI) resources as inspiration, along with a lot of learning and a lot of late nights.
-
-</sub>
+<p align="center">
+  <sub><strong>Disclaimer:</strong> This project was developed with help from Claude Code, Antigravity, and Based Hardware (OMI) resources as inspiration, along with a lot of learning and a lot of late nights.</sub>
+</p>
