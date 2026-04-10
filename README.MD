@@ -86,7 +86,8 @@ No screen. No friction. Less distraction.
 
 ---
 
-## AI Stack
+## Data stack
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/bf38c30c-c303-4928-8b87-f6bba0ac83f2" width="75%" alt="AI pipeline" />
