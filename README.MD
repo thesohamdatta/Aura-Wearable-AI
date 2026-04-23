@@ -571,40 +571,40 @@ Test: curl http://localhost:8000/health
 
 ```
 Aura-Wearable-AI/
-├── firmware/                    ← AURA firmware (ESP32-S3)
-│   ├── firmware.ino             ← entry point (Arduino)
+├── firmware/                     ← AURA firmware (ESP32-S3)
+│   ├── firmware.ino              ← entry point (Arduino)
 │   ├── src/
-│   │   ├── app.cpp              ← main application logic
-│   │   ├── mic.cpp              ← microphone (PDM/I2S)
-│   │   ├── opus_encoder.cpp     ← audio compression
-│   │   ├── ota.cpp              ← OTA firmware updates
-│   │   └── config.h             ← all settings here
-│   ├── releases/                ← pre-built UF2 binary
+│   │   ├── app.cpp               ← main application logic
+│   │   ├── mic.cpp               ← microphone (PDM/I2S)
+│   │   ├── opus_encoder.cpp      ← audio compression
+│   │   ├── ota.cpp               ← OTA firmware updates
+│   │   └── config.h              ← all settings here
+│   ├── releases/                 ← pre-built UF2 binary
 │   └── readme.md
 │
 ├── app/
-│   └── android/                 ← Android companion app
+│   └── android/                  ← Android companion app
 │
-├── backend/                     ← FastAPI backend
+├── backend/                      ← FastAPI backend
 │   ├── routers/
-│   │   ├── transcribe.py        ← audio streaming
-│   │   ├── conversations.py     ← memory management
-│   │   └── chat.py              ← AI chat
+│   │   ├── transcribe.py         ← audio streaming
+│   │   ├── conversations.py      ← memory management
+│   │   └── chat.py               ← AI chat
 │   ├── main.py
 │   ├── requirements.txt
-│   ├── .env.template            ← copy → .env
+│   ├── .env.template             ← copy → .env
 │   └── README.md
 │
 ├── hardware/
-│   └── CASE.stl                 ← 3D printable case
+│   └── CASE.stl                  ← 3D printable case
 │
 ├── Assest/
-│   ├── MAIN/                    ← hero images, app mockups
-│   ├── 3D PARTS/                ← STL renders, exploded views
-│   │   └── INSIDE VIEW/         ← CASE.stl + assembly renders
-│   └── CIRCUIT DIAGRAM/         ← component photos
+│   ├── MAIN/                     ← hero images, app mockups
+│   ├── 3D PARTS/                 ← STL renders, exploded views
+│   │   └── INSIDE VIEW/          ← CASE.stl + assembly renders
+│   └── CIRCUIT DIAGRAM/          ← component photos
 │
-└── docs/                        ← developer documentation
+└── docs/                         ← developer documentation
 ```
 
 <br/>
