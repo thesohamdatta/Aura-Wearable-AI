@@ -4,6 +4,13 @@ Companion Android app for the AURA wearable AI pendant.
 
 Pairs with the AURA pendant over BLE, streams audio and images to the backend, and displays memories, transcriptions, and AI chat.
 
+<div align="center">
+
+<img src="../Assest/MAIN/Hero APP mocuk of applicaiotn .png" width="48%"/> &nbsp;
+<img src="../Assest/MAIN/Applicaiton UI Mock up.png" width="48%"/>
+
+</div>
+
 ---
 
 ## Structure
