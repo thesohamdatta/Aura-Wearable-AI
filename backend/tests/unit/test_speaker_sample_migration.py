@@ -6,7 +6,7 @@ from unittest.mock import MagicMock
 
 os.environ.setdefault(
     "ENCRYPTION_SECRET",
-    "omi_ZwB2ZNqB2HHpMK6wStk7sTpavJiPTFg7gXUHnc4tFABPU6pZ2c2DKgehtfgi4RZv",
+    "aura_ZwB2ZNqB2HHpMK6wStk7sTpavJiPTFg7gXUHnc4tFABPU6pZ2c2DKgehtfgi4RZv",
 )
 
 # Mock modules that initialize GCP clients at import time or have complex dependencies

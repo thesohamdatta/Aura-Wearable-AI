@@ -158,7 +158,7 @@ async def delete_limitless_conversations(
     Returns:
         Number of deleted conversations
     """
-    # TODO: This deletes all the other conversations as well (which were created in omi using the pendant)
+    # TODO: This deletes all the other conversations as well (which were created in aura using the pendant)
     # TODO: Add a flag to the conversation to indicate that it was imported
     # deleted_count = conversations_db.delete_conversations_by_source(uid, 'limitless')
 

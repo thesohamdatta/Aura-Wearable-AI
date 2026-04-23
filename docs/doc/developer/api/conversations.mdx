@@ -50,7 +50,7 @@ description: "Create and retrieve conversations via the Developer API"
   <Tab title="cURL">
     ```bash
     curl -H "Authorization: Bearer $API_KEY" \
-      "https://api.omi.me/v1/dev/user/conversations?limit=10&include_transcript=true"
+      "https://api.aura.me/v1/dev/user/conversations?limit=10&include_transcript=true"
     ```
   </Tab>
   <Tab title="Python">
@@ -58,7 +58,7 @@ description: "Create and retrieve conversations via the Developer API"
     import requests
 
     response = requests.get(
-        "https://api.omi.me/v1/dev/user/conversations",
+        "https://api.aura.me/v1/dev/user/conversations",
         headers={"Authorization": f"Bearer {API_KEY}"},
         params={"limit": 10, "include_transcript": True}
     )
@@ -68,7 +68,7 @@ description: "Create and retrieve conversations via the Developer API"
   <Tab title="JavaScript">
     ```javascript
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/conversations?limit=10&include_transcript=true",
+      "https://api.aura.me/v1/dev/user/conversations?limit=10&include_transcript=true",
       { headers: { Authorization: `Bearer ${API_KEY}` } }
     );
     const conversations = await response.json();
@@ -86,7 +86,7 @@ description: "Create and retrieve conversations via the Developer API"
         "started_at": "2025-01-20T13:50:00Z",
         "finished_at": "2025-01-20T14:10:00Z",
         "language": "en",
-        "source": "omi",
+        "source": "aura",
         "structured": {
           "title": "Feature Discussion",
           "overview": "Brainstorming session for new features",
@@ -219,7 +219,7 @@ description: "Create and retrieve conversations via the Developer API"
 <Tabs>
   <Tab title="cURL">
     ```bash
-    curl -X POST "https://api.omi.me/v1/dev/user/conversations" \
+    curl -X POST "https://api.aura.me/v1/dev/user/conversations" \
       -H "Authorization: Bearer $API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -236,7 +236,7 @@ description: "Create and retrieve conversations via the Developer API"
     import requests
 
     response = requests.post(
-        "https://api.omi.me/v1/dev/user/conversations",
+        "https://api.aura.me/v1/dev/user/conversations",
         headers={
             "Authorization": f"Bearer {API_KEY}",
             "Content-Type": "application/json"
@@ -255,7 +255,7 @@ description: "Create and retrieve conversations via the Developer API"
   <Tab title="JavaScript">
     ```javascript
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/conversations",
+      "https://api.aura.me/v1/dev/user/conversations",
       {
         method: "POST",
         headers: {
@@ -334,14 +334,14 @@ Memories and action items are extracted asynchronously. Use the GET endpoints to
     | `end` | float | **Yes** | End time in seconds (e.g., 1.5, 3.0, 65.8) |
   </Accordion>
   <Accordion title="Available Sources" icon="microchip">
-    `omi`, `friend`, `openglass`, `phone`, `desktop`, `apple_watch`, `bee`, `plaud`, `frame`, `screenpipe`, `workflow`, `sdcard`, `external_integration`
+    `aura`, `friend`, `openglass`, `phone`, `desktop`, `apple_watch`, `bee`, `plaud`, `frame`, `screenpipe`, `workflow`, `sdcard`, `external_integration`
   </Accordion>
 </AccordionGroup>
 
 <Tabs>
   <Tab title="cURL">
     ```bash
-    curl -X POST "https://api.omi.me/v1/dev/user/conversations/from-segments" \
+    curl -X POST "https://api.aura.me/v1/dev/user/conversations/from-segments" \
       -H "Authorization: Bearer $API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -371,7 +371,7 @@ Memories and action items are extracted asynchronously. Use the GET endpoints to
     import requests
 
     response = requests.post(
-        "https://api.omi.me/v1/dev/user/conversations/from-segments",
+        "https://api.aura.me/v1/dev/user/conversations/from-segments",
         headers={
             "Authorization": f"Bearer {API_KEY}",
             "Content-Type": "application/json"
@@ -403,7 +403,7 @@ Memories and action items are extracted asynchronously. Use the GET endpoints to
   <Tab title="JavaScript">
     ```javascript
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/conversations/from-segments",
+      "https://api.aura.me/v1/dev/user/conversations/from-segments",
       {
         method: "POST",
         headers: {
@@ -476,7 +476,7 @@ Unlike text-based conversations, transcript segments ARE stored in the `transcri
   <Tab title="cURL">
     ```bash
     curl -H "Authorization: Bearer $API_KEY" \
-      "https://api.omi.me/v1/dev/user/conversations/conv_456?include_transcript=true"
+      "https://api.aura.me/v1/dev/user/conversations/conv_456?include_transcript=true"
     ```
   </Tab>
   <Tab title="Python">
@@ -484,7 +484,7 @@ Unlike text-based conversations, transcript segments ARE stored in the `transcri
     import requests
 
     response = requests.get(
-        "https://api.omi.me/v1/dev/user/conversations/conv_456",
+        "https://api.aura.me/v1/dev/user/conversations/conv_456",
         headers={"Authorization": f"Bearer {API_KEY}"},
         params={"include_transcript": True}
     )
@@ -494,7 +494,7 @@ Unlike text-based conversations, transcript segments ARE stored in the `transcri
   <Tab title="JavaScript">
     ```javascript
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/conversations/conv_456?include_transcript=true",
+      "https://api.aura.me/v1/dev/user/conversations/conv_456?include_transcript=true",
       { headers: { Authorization: `Bearer ${API_KEY}` } }
     );
     const conversation = await response.json();
@@ -562,7 +562,7 @@ Unlike text-based conversations, transcript segments ARE stored in the `transcri
 <Tabs>
   <Tab title="cURL">
     ```bash
-    curl -X PATCH "https://api.omi.me/v1/dev/user/conversations/conv_456" \
+    curl -X PATCH "https://api.aura.me/v1/dev/user/conversations/conv_456" \
       -H "Authorization: Bearer $API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -575,7 +575,7 @@ Unlike text-based conversations, transcript segments ARE stored in the `transcri
     import requests
 
     response = requests.patch(
-        "https://api.omi.me/v1/dev/user/conversations/conv_456",
+        "https://api.aura.me/v1/dev/user/conversations/conv_456",
         headers={
             "Authorization": f"Bearer {API_KEY}",
             "Content-Type": "application/json"
@@ -588,7 +588,7 @@ Unlike text-based conversations, transcript segments ARE stored in the `transcri
   <Tab title="JavaScript">
     ```javascript
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/conversations/conv_456",
+      "https://api.aura.me/v1/dev/user/conversations/conv_456",
       {
         method: "PATCH",
         headers: {
@@ -656,7 +656,7 @@ Use `discarded: true` to hide a conversation from the main list without permanen
 <Tabs>
   <Tab title="cURL">
     ```bash
-    curl -X DELETE "https://api.omi.me/v1/dev/user/conversations/conv_456" \
+    curl -X DELETE "https://api.aura.me/v1/dev/user/conversations/conv_456" \
       -H "Authorization: Bearer $API_KEY"
     ```
   </Tab>
@@ -665,7 +665,7 @@ Use `discarded: true` to hide a conversation from the main list without permanen
     import requests
 
     response = requests.delete(
-        "https://api.omi.me/v1/dev/user/conversations/conv_456",
+        "https://api.aura.me/v1/dev/user/conversations/conv_456",
         headers={"Authorization": f"Bearer {API_KEY}"}
     )
     result = response.json()
@@ -676,7 +676,7 @@ Use `discarded: true` to hide a conversation from the main list without permanen
   <Tab title="JavaScript">
     ```javascript
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/conversations/conv_456",
+      "https://api.aura.me/v1/dev/user/conversations/conv_456",
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${API_KEY}` }
@@ -712,7 +712,7 @@ This action is permanent. Deleted conversations and their associated photos cann
     import requests
     from datetime import datetime, timezone
 
-    API_KEY = "omi_dev_your_api_key"
+    API_KEY = "aura_dev_your_api_key"
 
     # Your meeting transcript with speaker diarization
     transcript = [
@@ -722,7 +722,7 @@ This action is permanent. Deleted conversations and their associated photos cann
         {"speaker": "SPEAKER_01", "text": "Just waiting on the design review", "start": 8.3, "end": 10.5},
     ]
 
-    # Convert to Omi format
+    # Convert to Aura format
     segments = [
         {
             "text": seg["text"],
@@ -736,7 +736,7 @@ This action is permanent. Deleted conversations and their associated photos cann
 
     # Create conversation
     response = requests.post(
-        "https://api.omi.me/v1/dev/user/conversations/from-segments",
+        "https://api.aura.me/v1/dev/user/conversations/from-segments",
         headers={
             "Authorization": f"Bearer {API_KEY}",
             "Content-Type": "application/json"
@@ -757,7 +757,7 @@ This action is permanent. Deleted conversations and their associated photos cann
   </Tab>
   <Tab title="JavaScript">
     ```javascript
-    const API_KEY = process.env.OMI_API_KEY;
+    const API_KEY = process.env.AURA_API_KEY;
 
     // Your meeting transcript with speaker diarization
     const transcript = [
@@ -767,7 +767,7 @@ This action is permanent. Deleted conversations and their associated photos cann
       { speaker: "SPEAKER_01", text: "Just waiting on the design review", start: 8.3, end: 10.5 },
     ];
 
-    // Convert to Omi format
+    // Convert to Aura format
     const segments = transcript.map(seg => ({
       text: seg.text,
       speaker: seg.speaker,
@@ -778,7 +778,7 @@ This action is permanent. Deleted conversations and their associated photos cann
 
     // Create conversation
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/conversations/from-segments",
+      "https://api.aura.me/v1/dev/user/conversations/from-segments",
       {
         method: "POST",
         headers: {
@@ -810,11 +810,11 @@ This action is permanent. Deleted conversations and their associated photos cann
   <Tab title="Bash">
     ```bash
     #!/bin/bash
-    API_KEY="omi_dev_your_api_key"
+    API_KEY="aura_dev_your_api_key"
 
     # Export all conversations with transcripts
     curl -H "Authorization: Bearer $API_KEY" \
-      "https://api.omi.me/v1/dev/user/conversations?limit=1000&include_transcript=true" \
+      "https://api.aura.me/v1/dev/user/conversations?limit=1000&include_transcript=true" \
       > conversations_backup.json
 
     echo "Exported conversations to conversations_backup.json"
@@ -825,7 +825,7 @@ This action is permanent. Deleted conversations and their associated photos cann
     import requests
     import json
 
-    API_KEY = "omi_dev_your_api_key"
+    API_KEY = "aura_dev_your_api_key"
 
     # Paginate through all conversations
     all_conversations = []
@@ -834,7 +834,7 @@ This action is permanent. Deleted conversations and their associated photos cann
 
     while True:
         response = requests.get(
-            "https://api.omi.me/v1/dev/user/conversations",
+            "https://api.aura.me/v1/dev/user/conversations",
             headers={"Authorization": f"Bearer {API_KEY}"},
             params={
                 "limit": limit,
@@ -861,7 +861,7 @@ This action is permanent. Deleted conversations and their associated photos cann
   <Tab title="JavaScript">
     ```javascript
     const fs = require('fs');
-    const API_KEY = process.env.OMI_API_KEY;
+    const API_KEY = process.env.AURA_API_KEY;
 
     async function exportConversations() {
       const allConversations = [];
@@ -870,7 +870,7 @@ This action is permanent. Deleted conversations and their associated photos cann
 
       while (true) {
         const response = await fetch(
-          `https://api.omi.me/v1/dev/user/conversations?limit=${limit}&offset=${offset}&include_transcript=true`,
+          `https://api.aura.me/v1/dev/user/conversations?limit=${limit}&offset=${offset}&include_transcript=true`,
           { headers: { Authorization: `Bearer ${API_KEY}` } }
         );
 

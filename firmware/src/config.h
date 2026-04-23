@@ -11,7 +11,7 @@
 // =============================================================================
 // DEVICE CONFIGURATION
 // =============================================================================
-#define BLE_DEVICE_NAME "OMI Glass"
+#define BLE_DEVICE_NAME "AURA Glass"
 #define FIRMWARE_VERSION_STRING "2.3.2"
 #define HARDWARE_REVISION "ESP32-S3-v1.0"
 #define MANUFACTURER_NAME "Based Hardware"
@@ -134,7 +134,7 @@ typedef enum {
 // =============================================================================
 // OPUS CODEC CONFIGURATION
 // =============================================================================
-#define AUDIO_CODEC_ID 21              // Opus codec ID (matches Omi protocol)
+#define AUDIO_CODEC_ID 21              // Opus codec ID (matches Aura protocol)
 #define OPUS_FRAME_SAMPLES 320         // 20ms frame @ 16kHz
 #define OPUS_OUTPUT_MAX_BYTES 160      // Max encoded frame size
 #define OPUS_BITRATE 32000             // 32kbps
@@ -146,9 +146,9 @@ typedef enum {
 #define AUDIO_TX_RING_BUFFER_SIZE 16   // Number of encoded frames to buffer
 
 // =============================================================================
-// BLE UUID DEFINITIONS - OMI Protocol
+// BLE UUID DEFINITIONS - AURA Protocol
 // =============================================================================
-#define OMI_SERVICE_UUID "19B10000-E8F2-537E-4F6C-D104768A1214"
+#define AURA_SERVICE_UUID "19B10000-E8F2-537E-4F6C-D104768A1214"
 #define AUDIO_DATA_UUID "19B10001-E8F2-537E-4F6C-D104768A1214"
 #define AUDIO_CODEC_UUID "19B10002-E8F2-537E-4F6C-D104768A1214"
 #define PHOTO_DATA_UUID "19B10005-E8F2-537E-4F6C-D104768A1214"

@@ -70,7 +70,7 @@ class ExternalIntegration(BaseModel):
     auth_steps: Optional[List[AuthStep]] = []
     app_home_url: Optional[str] = None
     actions: Optional[List[Action]] = []
-    # URL to fetch chat tools manifest from (e.g., https://my-app.com/.well-known/omi-tools.json)
+    # URL to fetch chat tools manifest from (e.g., https://my-app.com/.well-known/aura-tools.json)
     chat_tools_manifest_url: Optional[str] = None
     # MCP server URL (e.g., https://mcp.example.com/mcp)
     mcp_server_url: Optional[str] = None
@@ -201,7 +201,7 @@ class App(AppBaseModel):
         return [param for param in params if param in self.proactive_notification.scopes]
 
     def get_image_url(self) -> str:
-        return f'https://raw.githubusercontent.com/BasedHardware/Omi/main{self.image}'
+        return f'https://raw.githubusercontent.com/BasedHardware/Aura/main{self.image}'
 
     def has_chat_tools(self) -> bool:
         """Check if app provides chat tools"""

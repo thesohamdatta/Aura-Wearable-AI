@@ -1,11 +1,11 @@
 ---
 title: "Integration Apps"
-description: "Build webhook-based apps that connect Omi to external services. Process memories, real-time transcripts, or raw audio."
+description: "Build webhook-based apps that connect Aura to external services. Process memories, real-time transcripts, or raw audio."
 ---
 
 ## What Are Integration Apps?
 
-Integration apps allow Omi to interact with external services by sending data to your webhook endpoints. Unlike prompt-based apps, these require you to host a server.
+Integration apps allow Aura to interact with external services by sending data to your webhook endpoints. Unlike prompt-based apps, these require you to host a server.
 
 <CardGroup cols={3}>
   <Card title="Memory Triggers" icon="bell">
@@ -21,7 +21,7 @@ Integration apps allow Omi to interact with external services by sending data to
 
 ```mermaid
 flowchart LR
-    subgraph Omi["Omi Backend"]
+    subgraph Aura["Aura Backend"]
         M[Memory Created]
         T[Live Transcript]
         A[Audio Stream]
@@ -44,12 +44,12 @@ flowchart LR
 
 ## Memory Creation Triggers
 
-These apps are activated when Omi creates a new memory, allowing you to process or store the data externally.
+These apps are activated when Aura creates a new memory, allowing you to process or store the data externally.
 
 <AccordionGroup>
   <Accordion title="How It Works" icon="gear">
     1. User completes a conversation
-    2. Omi processes and creates a memory
+    2. Aura processes and creates a memory
     3. Your webhook receives the complete memory object
     4. Your server processes and responds
 
@@ -130,7 +130,7 @@ Your endpoint receives a POST request with the memory object:
 ```
 
 <Tip>
-Check out the [Notion CRM Example](https://github.com/BasedHardware/Omi/blob/main/plugins/example/main.py) for a complete implementation.
+Check out the [Notion CRM Example](https://github.com/BasedHardware/Aura/blob/main/plugins/example/main.py) for a complete implementation.
 </Tip>
 
 ---
@@ -142,7 +142,7 @@ Process conversation transcripts as they occur, enabling real-time analysis and 
 <AccordionGroup>
   <Accordion title="How It Works" icon="gear">
     1. User starts speaking
-    2. Omi transcribes in real-time
+    2. Aura transcribes in real-time
     3. Your webhook receives transcript segments as they're created
     4. Your server processes and can trigger immediate actions
 
@@ -218,18 +218,18 @@ Real-time processors require careful design to avoid performance issues.
 </CardGroup>
 
 <Tip>
-See the [Real-time News Checker Example](https://github.com/BasedHardware/omi/blob/main/plugins/example/advanced/realtime.py) for a complete implementation.
+See the [Real-time News Checker Example](https://github.com/BasedHardware/aura/blob/main/plugins/example/advanced/realtime.py) for a complete implementation.
 </Tip>
 
 ---
 
 ## Real-Time Audio Bytes
 
-Stream raw audio bytes from Omi directly to your endpoint for custom audio processing.
+Stream raw audio bytes from Aura directly to your endpoint for custom audio processing.
 
 <AccordionGroup>
   <Accordion title="How It Works" icon="gear">
-    1. User speaks into Omi device
+    1. User speaks into Aura device
     2. Raw PCM audio is streamed to your endpoint
     3. Your server processes the audio bytes directly
     4. Handle as needed (custom STT, VAD, feature extraction, etc.)
@@ -267,7 +267,7 @@ To produce a playable WAV file, prepend a WAV header and concatenate the receive
 
 ### Configuring Delivery Frequency
 
-You can control how often audio is sent via the Omi app Developer Settings:
+You can control how often audio is sent via the Aura app Developer Settings:
 
 ```
 url,seconds
@@ -320,7 +320,7 @@ For a complete implementation, see the [Audio Streaming Guide](/doc/developer/ap
     Use Developer Mode to test without creating new memories (see testing section below)
   </Step>
   <Step title="Submit Your App" icon="rocket">
-    Publish through the Omi mobile app
+    Publish through the Aura mobile app
   </Step>
 </Steps>
 
@@ -330,7 +330,7 @@ For a complete implementation, see the [Audio Streaming Guide](/doc/developer/ap
 
 <Steps>
   <Step title="Enable Developer Mode" icon="code">
-    Open Omi app → Settings → Enable Developer Mode → Developer Settings
+    Open Aura app → Settings → Enable Developer Mode → Developer Settings
   </Step>
   <Step title="Set Webhook URL" icon="link">
     - **Memory Triggers**: Enter URL in "Memory Creation Webhook"
@@ -345,7 +345,7 @@ For a complete implementation, see the [Audio Streaming Guide](/doc/developer/ap
 </Steps>
 
 <Tip>
-Use [webhook.site](https://webhook.site) to see exactly what data Omi sends before writing any code.
+Use [webhook.site](https://webhook.site) to see exactly what data Aura sends before writing any code.
 </Tip>
 
 ---
@@ -379,7 +379,7 @@ When submitting your integration app:
 </CardGroup>
 
 <Info>
-When users open your setup links, Omi automatically appends a `uid` query parameter. Use this to associate credentials with specific users.
+When users open your setup links, Aura automatically appends a `uid` query parameter. Use this to associate credentials with specific users.
 </Info>
 
 ---
@@ -388,7 +388,7 @@ When users open your setup links, Omi automatically appends a `uid` query parame
 
 <CardGroup cols={2}>
   <Card title="Developer API" icon="code" href="/doc/developer/api">
-    Access your own personal Omi data programmatically
+    Access your own personal Aura data programmatically
   </Card>
   <Card title="Data Import APIs" icon="file-import" href="/doc/developer/apps/Import">
     Create conversations and memories via REST API

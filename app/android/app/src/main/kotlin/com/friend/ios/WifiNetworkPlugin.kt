@@ -15,7 +15,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
 /**
- * Plugin for managing WiFi network connections to Omi device's AP.
+ * Plugin for managing WiFi network connections to Aura device's AP.
  *
  * For Android 10+ (API 29+): Uses WifiNetworkSpecifier with ConnectivityManager
  * For Android 9 and below: Uses deprecated WifiConfiguration APIs
@@ -24,7 +24,7 @@ class WifiNetworkPlugin(private val context: Context) : MethodChannel.MethodCall
 
     companion object {
         private const val TAG = "WifiNetworkPlugin"
-        private const val CHANNEL_NAME = "com.omi.wifi_network"
+        private const val CHANNEL_NAME = "com.aura.wifi_network"
 
         fun registerWith(flutterEngine: FlutterEngine, context: Context) {
             val channel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL_NAME)

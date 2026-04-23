@@ -89,8 +89,8 @@ def render_oauth_response(
             'title': f"{config['name']} Auth",
             'icon': '✓',
             'message': 'Authentication Successful!',
-            'description': 'Redirecting back to Omi...',
-            'redirect_url': redirect_url or f'omi://{app_key}/callback?error=unknown',
+            'description': 'Redirecting back to Aura...',
+            'redirect_url': redirect_url or f'aura://{app_key}/callback?error=unknown',
             'show_spinner': True,
         }
     else:
@@ -107,7 +107,7 @@ def render_oauth_response(
             'icon': '❌',
             'message': f"{'Security' if error_type == 'invalid_state' else 'Configuration' if error_type == 'config_error' else 'Authentication'} Error",
             'description': error_messages.get(error_type, 'An error occurred.'),
-            'redirect_url': f'omi://{app_key}/callback?error={error_type or "unknown"}',
+            'redirect_url': f'aura://{app_key}/callback?error={error_type or "unknown"}',
             'show_spinner': False,
         }
 
@@ -478,7 +478,7 @@ async def handle_oauth_callback(
                 print(f'{app_key}: Error storing tokens in Firebase: {e}')
                 return render_oauth_response(request, app_key, success=False, error_type='server_error')
 
-            deep_link = f'omi://{app_key}/callback?success=true'
+            deep_link = f'aura://{app_key}/callback?success=true'
 
             return render_oauth_response(request, app_key, success=True, redirect_url=deep_link)
         else:

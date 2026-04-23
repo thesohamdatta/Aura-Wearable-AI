@@ -1,11 +1,11 @@
 ---
 title: Storing Conversations & Memories
-description: 'This document outlines how Omi stores conversation data and extracts memories from conversations.'
+description: 'This document outlines how Aura stores conversation data and extracts memories from conversations.'
 ---
 
 ## Overview
 
-Omi uses a **dual-collection architecture** for storing user data:
+Aura uses a **dual-collection architecture** for storing user data:
 
 <CardGroup cols={2}>
   <Card title="Conversations" icon="comments">
@@ -125,7 +125,7 @@ users/
 | `created_at` | datetime | When the conversation record was created |
 | `started_at` | datetime | When the actual conversation started |
 | `finished_at` | datetime | When the conversation ended |
-| `source` | enum | Source device (omi, phone, desktop, openglass, etc.) |
+| `source` | enum | Source device (aura, phone, desktop, openglass, etc.) |
 | `language` | string | Language code of the conversation |
 | `status` | enum | Processing status: `in_progress`, `processing`, `completed`, `failed` |
 | `structured` | object | Extracted structured information (see below) |

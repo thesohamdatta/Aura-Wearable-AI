@@ -1,15 +1,15 @@
 ---
 title: "Real-Time Audio Streaming"
-description: "Stream raw audio bytes from your Omi device to any backend for custom speech processing, VAD, or audio analysis."
+description: "Stream raw audio bytes from your Aura device to any backend for custom speech processing, VAD, or audio analysis."
 ---
 
 ## Overview
 
-Omi allows you to stream audio bytes from your DevKit directly to your backend or any external service. This enables custom audio processing like:
+Aura allows you to stream audio bytes from your DevKit directly to your backend or any external service. This enables custom audio processing like:
 
 <CardGroup cols={2}>
   <Card title="Custom Speech Recognition" icon="microphone">
-    Use your own ASR models instead of Omi's default transcription
+    Use your own ASR models instead of Aura's default transcription
   </Card>
   <Card title="Voice Activity Detection" icon="waveform-lines">
     Implement custom VAD logic for specialized use cases
@@ -24,11 +24,11 @@ Omi allows you to stream audio bytes from your DevKit directly to your backend o
 
 ```mermaid
 flowchart LR
-    subgraph Device["Omi Device"]
+    subgraph Device["Aura Device"]
         M[Microphone] --> A[Audio Buffer]
     end
 
-    A -->|Every X seconds| B[Omi Backend]
+    A -->|Every X seconds| B[Aura Backend]
     B -->|POST octet-stream| W[Your Webhook]
     W --> P[Your Processing]
 ```
@@ -71,15 +71,15 @@ The sample rate is passed as a query parameter so your endpoint can handle diffe
     - Process the raw bytes (buffer, save, or analyze)
     - Return 200 OK quickly to avoid timeouts
   </Step>
-  <Step title="Configure in Omi App" icon="mobile">
-    1. Open the Omi App
+  <Step title="Configure in Aura App" icon="mobile">
+    1. Open the Aura App
     2. Go to **Settings** → **Developer Mode**
     3. Scroll to **Realtime audio bytes**
     4. Enter your webhook URL
     5. Set the **Every x seconds** field (e.g., `10` for 10-second chunks)
   </Step>
   <Step title="Test Your Integration" icon="flask">
-    Start speaking while wearing your Omi device. Audio bytes should arrive at your webhook at the configured interval.
+    Start speaking while wearing your Aura device. Audio bytes should arrive at your webhook at the configured interval.
 
     <Tip>
     Use [webhook.site](https://webhook.site) to verify data is arriving before implementing your processing logic.
@@ -150,7 +150,7 @@ A complete example that saves audio files to Google Cloud Storage.
     Follow the [Saving Audio Guide](/doc/developer/savingaudio) steps 1-5 to create a bucket with proper permissions.
   </Step>
   <Step title="Fork the Example Repository" icon="code-fork">
-    Fork [github.com/mdmohsin7/omi-audio-streaming](https://github.com/mdmohsin7/omi-audio-streaming)
+    Fork [github.com/mdmohsin7/aura-audio-streaming](https://github.com/mdmohsin7/aura-audio-streaming)
   </Step>
   <Step title="Clone and Deploy" icon="cloud-arrow-up">
     Clone the repository and deploy to your preferred cloud provider (GCP, AWS, DigitalOcean) or run locally with ngrok.
@@ -165,7 +165,7 @@ A complete example that saves audio files to Google Cloud Storage.
     | `GOOGLE_APPLICATION_CREDENTIALS_JSON` | GCP service account credentials (base64 encoded) |
     | `GCS_BUCKET_NAME` | Your GCS bucket name |
   </Step>
-  <Step title="Configure Omi App" icon="mobile">
+  <Step title="Configure Aura App" icon="mobile">
     Set the endpoint in Developer Settings → Realtime audio bytes:
     ```
     https://your-deployment-url.com/audio
@@ -304,9 +304,9 @@ Audio data is sensitive. Ensure your endpoint is secured with HTTPS and implemen
     Guide to storing audio in cloud storage
   </Card>
   <Card title="Real-time Transcription" icon="closed-captioning" href="/doc/developer/backend/transcription">
-    How Omi's built-in transcription works
+    How Aura's built-in transcription works
   </Card>
   <Card title="Apps Introduction" icon="puzzle-piece" href="/doc/developer/apps/Introduction">
-    Overview of all Omi app types
+    Overview of all Aura app types
   </Card>
 </CardGroup>

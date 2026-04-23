@@ -1,9 +1,9 @@
 ---
 title: "Data Import APIs"
-description: "Programmatically create and read conversations and memories in users' Omi accounts using the Integration Import APIs."
+description: "Programmatically create and read conversations and memories in users' Aura accounts using the Integration Import APIs."
 ---
 
-Omi's Data Import APIs allow your app to programmatically interact with user data in the Omi ecosystem. Unlike triggers (which respond to events), these APIs let your app proactively create or read data.
+Aura's Data Import APIs allow your app to programmatically interact with user data in the Aura ecosystem. Unlike triggers (which respond to events), these APIs let your app proactively create or read data.
 
 <CardGroup cols={2}>
   <Card title="Create Conversation" icon="message-plus">
@@ -31,18 +31,18 @@ Omi's Data Import APIs allow your app to programmatically interact with user dat
 | Read Conversations | `GET` | `/v2/integrations/{app_id}/conversations?uid={user_id}` |
 | Read Memories | `GET` | `/v2/integrations/{app_id}/memories?uid={user_id}` |
 
-**Base URL:** `https://api.omi.me`
+**Base URL:** `https://api.aura.me`
 
 ---
 
 ## Prerequisites
 
 <Steps>
-  <Step title="Understand Omi App Basics">
-    Familiarize yourself with [Omi app development](/doc/developer/apps/Introduction) and [integration apps](/doc/developer/apps/Integrations)
+  <Step title="Understand Aura App Basics">
+    Familiarize yourself with [Aura app development](/doc/developer/apps/Introduction) and [integration apps](/doc/developer/apps/Integrations)
   </Step>
   <Step title="Create Your App">
-    In the Omi mobile app:
+    In the Aura mobile app:
     1. Go to **Apps** → **Create App**
     2. Under **App Capabilities**, select **External Integration**
     3. Select **Imports** and choose the specific capabilities your app needs
@@ -53,7 +53,7 @@ Omi's Data Import APIs allow your app to programmatically interact with user dat
     <Warning>Copy and store your API key securely - you won't be able to see it again!</Warning>
   </Step>
   <Step title="User Enables Your App">
-    The user must explicitly enable your app in their Omi account before you can access their data
+    The user must explicitly enable your app in their Aura account before you can access their data
   </Step>
 </Steps>
 
@@ -73,12 +73,12 @@ Authorization: Bearer sk_your_api_key_here
 
 ## Create Conversation API
 
-Create new conversations in a user's Omi account from external sources like phone calls, emails, or messages.
+Create new conversations in a user's Aura account from external sources like phone calls, emails, or messages.
 
 ### Endpoint
 
 ```
-POST https://api.omi.me/v2/integrations/{app_id}/user/conversations?uid={user_id}
+POST https://api.aura.me/v2/integrations/{app_id}/user/conversations?uid={user_id}
 ```
 
 ### Request Body
@@ -126,7 +126,7 @@ The conversation is created asynchronously in the user's account.
     from datetime import datetime, timezone
 
     response = requests.post(
-        f"https://api.omi.me/v2/integrations/{APP_ID}/user/conversations?uid={USER_ID}",
+        f"https://api.aura.me/v2/integrations/{APP_ID}/user/conversations?uid={USER_ID}",
         headers={"Authorization": f"Bearer {API_KEY}"},
         json={
             "started_at": datetime.now(timezone.utc).isoformat(),
@@ -141,7 +141,7 @@ The conversation is created asynchronously in the user's account.
   <Accordion title="Example: Text Messages" icon="comment-sms">
     ```python
     response = requests.post(
-        f"https://api.omi.me/v2/integrations/{APP_ID}/user/conversations?uid={USER_ID}",
+        f"https://api.aura.me/v2/integrations/{APP_ID}/user/conversations?uid={USER_ID}",
         headers={"Authorization": f"Bearer {API_KEY}"},
         json={
             "text": "Mom: Don't forget to pick up milk\n\nMe: Will do!",
@@ -154,7 +154,7 @@ The conversation is created asynchronously in the user's account.
   <Accordion title="Example: Email" icon="envelope">
     ```python
     response = requests.post(
-        f"https://api.omi.me/v2/integrations/{APP_ID}/user/conversations?uid={USER_ID}",
+        f"https://api.aura.me/v2/integrations/{APP_ID}/user/conversations?uid={USER_ID}",
         headers={"Authorization": f"Bearer {API_KEY}"},
         json={
             "text": "From: alex@example.com\nSubject: Dinner Plans\n\nWould you like to grab dinner Friday at 7pm?",
@@ -167,7 +167,7 @@ The conversation is created asynchronously in the user's account.
   <Accordion title="Example: Social Post with Location" icon="location-dot">
     ```python
     response = requests.post(
-        f"https://api.omi.me/v2/integrations/{APP_ID}/user/conversations?uid={USER_ID}",
+        f"https://api.aura.me/v2/integrations/{APP_ID}/user/conversations?uid={USER_ID}",
         headers={"Authorization": f"Bearer {API_KEY}"},
         json={
             "text": "Just finished my first marathon! 26.2 miles in 4:15. #running",
@@ -184,19 +184,19 @@ The conversation is created asynchronously in the user's account.
 
 ## Create Memories API
 
-Add facts and knowledge to a user's memory bank. You can either provide raw text (Omi will extract memories automatically) or provide explicit memory objects.
+Add facts and knowledge to a user's memory bank. You can either provide raw text (Aura will extract memories automatically) or provide explicit memory objects.
 
 ### Endpoint
 
 ```
-POST https://api.omi.me/v2/integrations/{app_id}/user/memories?uid={user_id}
+POST https://api.aura.me/v2/integrations/{app_id}/user/memories?uid={user_id}
 ```
 
 ### Request Options
 
 <Tabs>
   <Tab title="Extract from Text">
-    Provide raw text and let Omi automatically extract relevant memories:
+    Provide raw text and let Aura automatically extract relevant memories:
 
     ```json
     {
@@ -257,7 +257,7 @@ Memories are extracted/saved asynchronously in the user's account.
   <Accordion title="Example: Extract from Email" icon="envelope">
     ```python
     response = requests.post(
-        f"https://api.omi.me/v2/integrations/{APP_ID}/user/memories?uid={USER_ID}",
+        f"https://api.aura.me/v2/integrations/{APP_ID}/user/memories?uid={USER_ID}",
         headers={"Authorization": f"Bearer {API_KEY}"},
         json={
             "text": "Your flight to Paris confirmed for May 15th. Departure: JFK 9:30 PM. Hotel de Paris: May 16-20.",
@@ -270,7 +270,7 @@ Memories are extracted/saved asynchronously in the user's account.
   <Accordion title="Example: Explicit User Preferences" icon="sliders">
     ```python
     response = requests.post(
-        f"https://api.omi.me/v2/integrations/{APP_ID}/user/memories?uid={USER_ID}",
+        f"https://api.aura.me/v2/integrations/{APP_ID}/user/memories?uid={USER_ID}",
         headers={"Authorization": f"Bearer {API_KEY}"},
         json={
             "memories": [
@@ -287,12 +287,12 @@ Memories are extracted/saved asynchronously in the user's account.
 
 ## Read Conversations API
 
-Retrieve conversations from a user's Omi account.
+Retrieve conversations from a user's Aura account.
 
 ### Endpoint
 
 ```
-GET https://api.omi.me/v2/integrations/{app_id}/conversations?uid={user_id}
+GET https://api.aura.me/v2/integrations/{app_id}/conversations?uid={user_id}
 ```
 
 ### Query Parameters
@@ -331,7 +331,7 @@ GET https://api.omi.me/v2/integrations/{app_id}/conversations?uid={user_id}
 <Accordion title="Example: Paginated Retrieval" icon="list">
 ```python
 response = requests.get(
-    f"https://api.omi.me/v2/integrations/{APP_ID}/conversations?uid={USER_ID}",
+    f"https://api.aura.me/v2/integrations/{APP_ID}/conversations?uid={USER_ID}",
     headers={"Authorization": f"Bearer {API_KEY}"},
     params={"limit": 50, "offset": 0}
 )
@@ -351,7 +351,7 @@ Retrieve memories (facts) from a user's knowledge base.
 ### Endpoint
 
 ```
-GET https://api.omi.me/v2/integrations/{app_id}/memories?uid={user_id}
+GET https://api.aura.me/v2/integrations/{app_id}/memories?uid={user_id}
 ```
 
 ### Query Parameters
@@ -379,7 +379,7 @@ GET https://api.omi.me/v2/integrations/{app_id}/memories?uid={user_id}
 <Accordion title="Example: Retrieve All Memories" icon="brain">
 ```python
 response = requests.get(
-    f"https://api.omi.me/v2/integrations/{APP_ID}/memories?uid={USER_ID}",
+    f"https://api.aura.me/v2/integrations/{APP_ID}/memories?uid={USER_ID}",
     headers={"Authorization": f"Bearer {API_KEY}"},
     params={"limit": 100}
 )
@@ -434,7 +434,7 @@ Implement exponential backoff when you receive a 429 error. Start with a 1-secon
 
 <AccordionGroup>
   <Accordion title="Journal Creator" icon="book">
-    Automatically create conversation entries from a journaling app, syncing daily reflections to Omi
+    Automatically create conversation entries from a journaling app, syncing daily reflections to Aura
   </Accordion>
   <Accordion title="Meeting Summarizer" icon="calendar">
     Create structured conversation summaries after calendar meetings end, including action items
@@ -464,8 +464,8 @@ Implement exponential backoff when you receive a 429 error. Start with a 1-secon
   <Step title="Mark Test Content">
     Clearly mark test conversations (e.g., prefix with "[TEST]") so they're easy to identify and clean up
   </Step>
-  <Step title="Verify in the Omi App">
-    After creating content, open the Omi app to verify it appears correctly
+  <Step title="Verify in the Aura App">
+    After creating content, open the Aura app to verify it appears correctly
   </Step>
   <Step title="Check Structured Data">
     For conversations, verify that title, overview, and action items are extracted correctly
@@ -485,7 +485,7 @@ Implement exponential backoff when you receive a 429 error. Start with a 1-secon
 
 ## Future Capabilities
 
-The Omi team is expanding the available capabilities. Coming soon:
+The Aura team is expanding the available capabilities. Coming soon:
 
 - Update existing conversations
 - Update existing memories
@@ -498,15 +498,15 @@ The Omi team is expanding the available capabilities. Coming soon:
 
 <CardGroup cols={2}>
   <Card title="Developer API" icon="code" href="/doc/developer/api">
-    Access your own personal Omi data programmatically
+    Access your own personal Aura data programmatically
   </Card>
   <Card title="Integration Apps" icon="plug" href="/doc/developer/apps/Integrations">
     Learn about building integration apps with triggers
   </Card>
   <Card title="Submit Your App" icon="paper-plane" href="/doc/developer/apps/Submitting">
-    Guidelines for submitting your app to the Omi store
+    Guidelines for submitting your app to the Aura store
   </Card>
   <Card title="Chat Tools" icon="wrench" href="/doc/developer/apps/ChatTools">
-    Add custom tools to Omi's AI chat
+    Add custom tools to Aura's AI chat
   </Card>
 </CardGroup>

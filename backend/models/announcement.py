@@ -24,7 +24,7 @@ class Targeting(BaseModel):
     app_version_max: Optional[str] = None  # Show to users <= this version
     firmware_version_min: Optional[str] = None
     firmware_version_max: Optional[str] = None
-    device_models: Optional[List[str]] = None  # ["Omi DevKit 2", "Omi Pro"]
+    device_models: Optional[List[str]] = None  # ["Aura DevKit 2", "Aura Pro"]
     platforms: Optional[List[str]] = None  # ["ios", "android"]
     trigger: TriggerType = TriggerType.VERSION_UPGRADE
     test_uids: Optional[List[str]] = None  # If set, only these users see the announcement (for testing)

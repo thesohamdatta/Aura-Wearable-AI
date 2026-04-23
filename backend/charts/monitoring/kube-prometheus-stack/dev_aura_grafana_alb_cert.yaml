@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: dev-aura-grafana-alb-cert
+  namespace: dev-aura-monitoring
+spec:
+  domains:
+    - monitor.auraapi.com

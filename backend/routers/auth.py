@@ -34,7 +34,7 @@ async def auth_authorize(
     state: Optional[str] = None,
 ):
     """
-    User authentication authorization endpoint for the main Omi app
+    User authentication authorization endpoint for the main Aura app
     Supports both initial sign-in and account linking flows
     """
     if provider not in ['google', 'apple']:

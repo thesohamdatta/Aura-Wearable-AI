@@ -1,17 +1,17 @@
 ---
 title: "App Setup"
-description: "Set up the Omi Flutter app for development. Build automatically with our dev backend, or manually with your own."
+description: "Set up the Aura Flutter app for development. Build automatically with our dev backend, or manually with your own."
 ---
 
 ## Overview
 
-There are two ways to set up the Omi app for development:
+There are two ways to set up the Aura app for development:
 
 <CardGroup cols={2}>
   <Card title="Automatic Setup" icon="wand-magic-sparkles" href="#build-the-app-automatically">
     **Recommended for most developers**
 
-    One command setup using Omi's development backend
+    One command setup using Aura's development backend
   </Card>
   <Card title="Manual Setup" icon="wrench" href="#build-the-app-manually">
     **For custom backends**
@@ -53,7 +53,7 @@ You'll also need [NDK](https://developer.android.com/ndk/downloads) to build Opu
 
 ## Build the App Automatically
 
-This is the **recommended** way to get started. It sets up your environment to use Omi's development backend with just one command.
+This is the **recommended** way to get started. It sets up your environment to use Aura's development backend with just one command.
 
 ### Video Walkthrough
 
@@ -61,7 +61,7 @@ This is the **recommended** way to get started. It sets up your environment to u
   width="560"
   height="315"
   src="https://www.youtube.com/embed/U6L8S1SaUls?si=etmPgly-7dhyXmG_"
-  title="Omi App Setup Video Guide"
+  title="Aura App Setup Video Guide"
   frameBorder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowFullScreen
@@ -112,7 +112,7 @@ This is the **recommended** way to get started. It sets up your environment to u
 </Steps>
 
 <Tip>
-The automatic setup uses Omi's development backend, making it the fastest way to start building apps and making changes.
+The automatic setup uses Aura's development backend, making it the fastest way to start building apps and making changes.
 </Tip>
 
 ---
@@ -144,7 +144,7 @@ Manual setup gives you full control, allowing you to use your own backend.
         ```
       </Accordion>
       <Accordion title="Recommended versions" icon="info-circle">
-        This project is tested with specific tool versions. See [`app/setup.sh`](https://github.com/BasedHardware/omi/blob/main/app/setup.sh) for recommended versions:
+        This project is tested with specific tool versions. See [`app/setup.sh`](https://github.com/BasedHardware/aura/blob/main/app/setup.sh) for recommended versions:
         - Flutter 3.35.3
         - Xcode 16.4
         - Android SDK Platform 35
@@ -185,7 +185,7 @@ Manual setup gives you full control, allowing you to use your own backend.
 
     | Key | Description |
     |-----|-------------|
-    | `API_BASE_URL` | Your backend URL (use `https://api.omiapi.com/` for dev, or [set up your own](/doc/developer/backend/Backend_Setup)) |
+    | `API_BASE_URL` | Your backend URL (use `https://api.auraapi.com/` for dev, or [set up your own](/doc/developer/backend/Backend_Setup)) |
     | `OPENAI_API_KEY` | Optional - for AI features |
     | `GOOGLE_MAPS_API_KEY` | Optional - for location features |
 
@@ -320,10 +320,10 @@ ln -s -f ../../scripts/pre-commit .git/hooks/pre-commit
 ## Need Help?
 
 <CardGroup cols={2}>
-  <Card title="Discord Community" icon="discord" href="http://discord.omi.me">
+  <Card title="Discord Community" icon="discord" href="http://discord.aura.me">
     Search the help channel or ask questions
   </Card>
-  <Card title="GitHub Issues" icon="github" href="https://github.com/BasedHardware/omi/issues">
+  <Card title="GitHub Issues" icon="github" href="https://github.com/BasedHardware/aura/issues">
     Report bugs or browse existing issues
   </Card>
 </CardGroup>
@@ -334,15 +334,15 @@ ln -s -f ../../scripts/pre-commit .git/hooks/pre-commit
 
 <CardGroup cols={2}>
   <Card title="Backend Setup" icon="server" href="/doc/developer/backend/Backend_Setup">
-    Set up your own Omi backend
+    Set up your own Aura backend
   </Card>
   <Card title="Build Apps" icon="puzzle-piece" href="/doc/developer/apps/Introduction">
-    Create Omi apps and integrations
+    Create Aura apps and integrations
   </Card>
   <Card title="Firmware Setup" icon="microchip" href="/doc/get_started/Flash_device">
     Flash and update device firmware
   </Card>
   <Card title="Contribution Guide" icon="code-branch" href="/doc/developer/Contribution">
-    How to contribute to Omi
+    How to contribute to Aura
   </Card>
 </CardGroup>

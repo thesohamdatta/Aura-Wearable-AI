@@ -614,7 +614,7 @@ def _reprocess_conversation_after_update(uid: str, conversation_id: str, languag
     print(f'Successfully reprocessed conversation {conversation_id}')
 
 
-def process_segment(path: str, uid: str, response: dict, source: ConversationSource = ConversationSource.omi):
+def process_segment(path: str, uid: str, response: dict, source: ConversationSource = ConversationSource.aura):
     url = get_syncing_file_temporal_signed_url(path)
 
     def delete_file():
@@ -702,7 +702,7 @@ def _cleanup_files(file_paths):
 async def sync_local_files(files: List[UploadFile] = File(...), uid: str = Depends(auth.get_current_user_uid)):
     # Improve a version without timestamp, to consider uploads from the stored in v2 device bytes.
     # Detect source from filenames
-    source = ConversationSource.omi
+    source = ConversationSource.aura
     for f in files:
         if f.filename and 'limitless' in f.filename.lower():
             source = ConversationSource.limitless

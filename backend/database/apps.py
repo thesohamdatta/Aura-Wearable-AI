@@ -472,17 +472,17 @@ def get_persona_by_username_twitter_handle_db(username: str, handle: str):
     return {'id': doc.id, **doc.to_dict()}
 
 
-def get_omi_personas_by_uid_db(uid: str):
+def get_aura_personas_by_uid_db(uid: str):
     filters = [FieldFilter('uid', '==', uid), FieldFilter('capabilities', 'array_contains', 'persona')]
     persona_ref = db.collection(apps_collection).where(filter=BaseCompositeFilter('AND', filters))
     docs = persona_ref.get()
     if not docs:
         return []
-    docs = [doc.to_dict() for doc in docs if 'omi' in doc.to_dict().get('connected_accounts', [])]
+    docs = [doc.to_dict() for doc in docs if 'aura' in doc.to_dict().get('connected_accounts', [])]
     return docs
 
 
-def get_omi_persona_apps_by_uid_db(uid: str):
+def get_aura_persona_apps_by_uid_db(uid: str):
     filters = [FieldFilter('uid', '==', uid), FieldFilter('category', '==', 'personality-emulation')]
     persona_ref = db.collection(apps_collection).where(filter=BaseCompositeFilter('AND', filters))
     docs = persona_ref.get()

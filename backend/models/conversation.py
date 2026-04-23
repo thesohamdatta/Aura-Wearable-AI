@@ -237,7 +237,7 @@ class CalendarMeetingContext(BaseModel):
 
 class ConversationSource(str, Enum):
     friend = 'friend'
-    omi = 'omi'
+    aura = 'aura'
     fieldy = 'fieldy'
     bee = 'bee'
     plaud = 'plaud'
@@ -293,7 +293,7 @@ class Conversation(BaseModel):
     started_at: Optional[datetime]
     finished_at: Optional[datetime]
 
-    source: Optional[ConversationSource] = ConversationSource.omi
+    source: Optional[ConversationSource] = ConversationSource.aura
     language: Optional[str] = None  # applies only to Friend # TODO: once released migrate db to default 'en'
 
     structured: Structured
@@ -442,7 +442,7 @@ class CreateConversation(BaseModel):
 
     photos: List[ConversationPhoto] = []
 
-    source: ConversationSource = ConversationSource.omi
+    source: ConversationSource = ConversationSource.aura
     language: Optional[str] = None
 
     processing_conversation_id: Optional[str] = None

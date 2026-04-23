@@ -11,43 +11,43 @@ from database.redis_db import get_generic_cache, set_generic_cache
 
 
 class DeviceModel(int, Enum):
-    OMI_DEVKIT_1 = 1
-    OMI_DEVKIT_2 = 2
+    AURA_DEVKIT_1 = 1
+    AURA_DEVKIT_2 = 2
     OPEN_GLASS = 3
-    OMI_CV1 = 4
-    OMI_GLASS = 5
+    AURA_CV1 = 4
+    AURA_GLASS = 5
 
 
 router = APIRouter()
 
 
 # Device Model Number
-# - DK2: Omi DevKit 2
+# - DK2: Aura DevKit 2
 # - DK1: Friend | Friend DevKit 1
 # - OpenGlass: OpenGlass
-# - Omi_CV1: Omi CV 1
-# - OMI_GLASS: OMI Glass
+# - Aura_CV1: Aura CV 1
+# - AURA_GLASS: AURA Glass
 def _get_device_by_model_number(device_model: str):
-    if device_model in ['Omi DevKit 2']:
-        return DeviceModel.OMI_DEVKIT_2
+    if device_model in ['Aura DevKit 2']:
+        return DeviceModel.AURA_DEVKIT_2
     if device_model in ['Friend DevKit 1', 'Friend']:
-        return DeviceModel.OMI_DEVKIT_1
+        return DeviceModel.AURA_DEVKIT_1
     if device_model in ['OpenGlass']:
         return DeviceModel.OPEN_GLASS
-    if device_model in ['Omi CV 1']:
-        return DeviceModel.OMI_CV1
-    if device_model in ['OMI Glass', 'OmiGlass']:
-        return DeviceModel.OMI_GLASS
+    if device_model in ['Aura CV 1']:
+        return DeviceModel.AURA_CV1
+    if device_model in ['AURA Glass', 'AuraGlass']:
+        return DeviceModel.AURA_GLASS
     # TODO: remove
-    if device_model in ['OMI_shell']:
-        return DeviceModel.OMI_CV1
+    if device_model in ['AURA_shell']:
+        return DeviceModel.AURA_CV1
     if device_model in ['nrf5340']:
-        return DeviceModel.OMI_CV1
+        return DeviceModel.AURA_CV1
 
     return None
 
 
-async def get_omi_github_releases(cache_key: str) -> Optional[List[Dict]]:
+async def get_aura_github_releases(cache_key: str) -> Optional[List[Dict]]:
     """Fetch releases from GitHub API with caching"""
 
     # Check cache first
@@ -57,7 +57,7 @@ async def get_omi_github_releases(cache_key: str) -> Optional[List[Dict]]:
 
     # Make GitHub API request if not cached
     async with httpx.AsyncClient() as client:
-        url = "https://api.github.com/repos/BasedHardware/omi/releases?per_page=100"
+        url = "https://api.github.com/repos/BasedHardware/aura/releases?per_page=100"
         headers = {
             "Accept": "application/vnd.github+json",
             "X-GitHub-Api-Version": "2022-11-28",
@@ -109,23 +109,23 @@ async def get_latest_version(device_model: str, firmware_revision: str, hardware
     if not device:
         raise HTTPException(status_code=404, detail="Device not found")
 
-    cache_key = "github_releases_omi"
-    releases = await get_omi_github_releases(cache_key)
+    cache_key = "github_releases_aura"
+    releases = await get_aura_github_releases(cache_key)
     if not releases:
         raise HTTPException(status_code=404, detail="No releases found for the repository")
 
     current_device_firmware_tuple = _parse_firmware_version(firmware_revision)
 
     # Determine release prefix based on device model
-    release_prefix = "Friend"  # Default for OMI_DEVKIT_1
-    if device == DeviceModel.OMI_DEVKIT_2:
-        release_prefix = "Omi_DK2"
+    release_prefix = "Friend"  # Default for AURA_DEVKIT_1
+    if device == DeviceModel.AURA_DEVKIT_2:
+        release_prefix = "Aura_DK2"
     elif device == DeviceModel.OPEN_GLASS:
         release_prefix = "OpenGlass"
-    elif device == DeviceModel.OMI_CV1:
-        release_prefix = "Omi_CV1"
-    elif device == DeviceModel.OMI_GLASS:
-        release_prefix = "OmiGlass"
+    elif device == DeviceModel.AURA_CV1:
+        release_prefix = "Aura_CV1"
+    elif device == DeviceModel.AURA_GLASS:
+        release_prefix = "AuraGlass"
 
     candidate_releases = []
     for release in releases:
@@ -180,8 +180,8 @@ async def get_latest_version(device_model: str, firmware_revision: str, hardware
     # KEY_VALUE_END -->
     assets = release_data.get("assets", [])
     asset = None
-    # OmiGlass uses .bin firmware files, other devices use OTA .zip files
-    if device == DeviceModel.OMI_GLASS:
+    # AuraGlass uses .bin firmware files, other devices use OTA .zip files
+    if device == DeviceModel.AURA_GLASS:
         for a in assets:
             asset_name = a.get("name")
             if isinstance(asset_name, str) and asset_name.endswith(".bin"):

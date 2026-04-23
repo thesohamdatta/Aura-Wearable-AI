@@ -193,8 +193,8 @@ async def _stream_handler(
     if onboarding_mode:
         single_language_mode = True
 
-    # Always include "Omi" as predefined vocabulary
-    vocabulary = list({"Omi"} | set(vocabulary))
+    # Always include "Aura" as predefined vocabulary
+    vocabulary = list({"Aura"} | set(vocabulary))
 
     # Convert 'auto' to 'multi' for consistency
     language = 'multi' if language == 'auto' else language
@@ -530,13 +530,13 @@ async def _stream_handler(
     async def _create_new_in_progress_conversation():
         nonlocal current_conversation_id
 
-        conversation_source = ConversationSource.omi
+        conversation_source = ConversationSource.aura
         if source:
             try:
                 conversation_source = ConversationSource(source)
             except ValueError:
-                print(f"Invalid conversation source '{source}', defaulting to 'omi'", uid, session_id)
-                conversation_source = ConversationSource.omi
+                print(f"Invalid conversation source '{source}', defaulting to 'aura'", uid, session_id)
+                conversation_source = ConversationSource.aura
 
         new_conversation_id = str(uuid.uuid4())
         stub_conversation = Conversation(
@@ -1522,8 +1522,8 @@ async def _stream_handler(
                 newly_processed_segments = []
                 for s in segments_to_process:
                     segment = TranscriptSegment(**s, speech_profile_processed=speech_profile_complete.is_set())
-                    # In onboarding mode, force is_user=True for non-Omi segments (user's answers)
-                    if onboarding_mode and s.get('speaker_id') != OnboardingHandler.OMI_SPEAKER_ID:
+                    # In onboarding mode, force is_user=True for non-Aura segments (user's answers)
+                    if onboarding_mode and s.get('speaker_id') != OnboardingHandler.AURA_SPEAKER_ID:
                         segment.is_user = True
                     newly_processed_segments.append(segment)
                 words_transcribed = len(" ".join([seg.text for seg in newly_processed_segments]).split())

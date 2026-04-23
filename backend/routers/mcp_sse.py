@@ -51,7 +51,7 @@ def authenticate_api_key(authorization: Optional[str]) -> Optional[str]:
     if authorization.startswith("Bearer "):
         token = authorization[7:]
 
-    if not token.startswith("omi_mcp_"):
+    if not token.startswith("aura_mcp_"):
         return None
 
     return mcp_api_key_db.get_user_id_by_api_key(token)
@@ -321,7 +321,7 @@ def handle_mcp_message(
                 {
                     "protocolVersion": "2025-03-26",
                     "capabilities": {"tools": {}},
-                    "serverInfo": {"name": "omi-mcp-server", "version": "1.0.0"},
+                    "serverInfo": {"name": "aura-mcp-server", "version": "1.0.0"},
                 },
             ),
             new_session_id,
@@ -371,10 +371,10 @@ async def mcp_authorize(
     code_challenge_method: Optional[str] = None,
 ):
     """OAuth authorize endpoint."""
-    if client_id != "omi":
+    if client_id != "aura":
         raise HTTPException(status_code=400, detail="Invalid client_id")
 
-    redirect_url = f"{redirect_uri}?code=omi"
+    redirect_url = f"{redirect_uri}?code=aura"
     if state:
         redirect_url += f"&state={state}"
 
@@ -399,7 +399,7 @@ async def mcp_token(request: Request):
     if not client_secret:
         raise HTTPException(status_code=400, detail="client_secret is required")
 
-    if client_id != "omi":
+    if client_id != "aura":
         raise HTTPException(status_code=400, detail="Invalid client_id")
 
     user_id = authenticate_api_key(client_secret)
@@ -578,7 +578,7 @@ async def mcp_sse_info(request: Request):
             "api_key": {"header": "Authorization", "format": "Bearer <api_key>"},
         },
         "instructions": {
-            "step1": "Create an MCP API key in the Omi app (Settings > Developer > MCP)",
+            "step1": "Create an MCP API key in the Aura app (Settings > Developer > MCP)",
             "step2": f"Set Server URL to: {base_url}/v1/mcp/sse",
             "step3": "Set Authorization header to your key",
         },

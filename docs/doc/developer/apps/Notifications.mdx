@@ -1,11 +1,11 @@
 ---
 title: "Sending Notifications"
-description: "Send push notifications to Omi users from your apps - both direct text notifications and AI-generated proactive notifications."
+description: "Send push notifications to Aura users from your apps - both direct text notifications and AI-generated proactive notifications."
 ---
 
 ## Overview
 
-Omi supports two types of notifications you can send to users:
+Aura supports two types of notifications you can send to users:
 
 <CardGroup cols={2}>
   <Card title="Direct Notifications" icon="message">
@@ -20,7 +20,7 @@ Omi supports two types of notifications you can send to users:
 
 ```mermaid
 flowchart LR
-    A[Your Server] -->|POST /notification| O[Omi API]
+    A[Your Server] -->|POST /notification| O[Aura API]
     O -->|Push| U[User]
 ```
 
@@ -29,7 +29,7 @@ flowchart LR
 ```mermaid
 flowchart LR
     T[Real-time Transcript] -->|Webhook| W[Your Server]
-    W -->|Prompt Template| O[Omi API]
+    W -->|Prompt Template| O[Aura API]
     O -->|AI Generated| U[User]
 ```
 
@@ -54,25 +54,25 @@ Send immediate messages to specific users. Perfect for alerts, updates, and resp
 | Setting | Value |
 |---------|-------|
 | Method | `POST` |
-| URL | `https://api.omi.me/v2/integrations/{app_id}/notification` |
+| URL | `https://api.aura.me/v2/integrations/{app_id}/notification` |
 | Auth | `Bearer <YOUR_APP_SECRET>` |
 
 **Query Parameters:**
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| `uid` | Yes | Target user's Omi ID |
+| `uid` | Yes | Target user's Aura ID |
 | `message` | Yes | Notification text |
 
 ### Implementation
 
 <Steps>
   <Step title="Get Credentials" icon="key">
-    You'll need your App ID and App Secret from the Omi developer portal.
+    You'll need your App ID and App Secret from the Aura developer portal.
 
     ```bash
-    export OMI_APP_ID="your_app_id"
-    export OMI_APP_SECRET="your_app_secret"
+    export AURA_APP_ID="your_app_id"
+    export AURA_APP_SECRET="your_app_secret"
     ```
 
     <Warning>
@@ -83,8 +83,8 @@ Send immediate messages to specific users. Perfect for alerts, updates, and resp
     Make a POST request with the user ID and message:
 
     ```bash
-    curl -X POST "https://api.omi.me/v2/integrations/${OMI_APP_ID}/notification?uid=USER_ID&message=Hello!" \
-      -H "Authorization: Bearer ${OMI_APP_SECRET}" \
+    curl -X POST "https://api.aura.me/v2/integrations/${AURA_APP_ID}/notification?uid=USER_ID&message=Hello!" \
+      -H "Authorization: Bearer ${AURA_APP_SECRET}" \
       -H "Content-Type: application/json"
     ```
   </Step>
@@ -101,10 +101,10 @@ Send immediate messages to specific users. Perfect for alerts, updates, and resp
     const https = require('https');
 
     async function sendNotification(userId, message) {
-      const appId = process.env.OMI_APP_ID;
-      const appSecret = process.env.OMI_APP_SECRET;
+      const appId = process.env.AURA_APP_ID;
+      const appSecret = process.env.AURA_APP_SECRET;
 
-      const url = new URL(`https://api.omi.me/v2/integrations/${appId}/notification`);
+      const url = new URL(`https://api.aura.me/v2/integrations/${appId}/notification`);
       url.searchParams.set('uid', userId);
       url.searchParams.set('message', message);
 
@@ -135,11 +135,11 @@ Send immediate messages to specific users. Perfect for alerts, updates, and resp
     import requests
 
     def send_notification(user_id: str, message: str) -> dict:
-        app_id = os.environ['OMI_APP_ID']
-        app_secret = os.environ['OMI_APP_SECRET']
+        app_id = os.environ['AURA_APP_ID']
+        app_secret = os.environ['AURA_APP_SECRET']
 
         response = requests.post(
-            f'https://api.omi.me/v2/integrations/{app_id}/notification',
+            f'https://api.aura.me/v2/integrations/{app_id}/notification',
             params={'uid': user_id, 'message': message},
             headers={'Authorization': f'Bearer {app_secret}'}
         )
@@ -156,7 +156,7 @@ Send immediate messages to specific users. Perfect for alerts, updates, and resp
 
 ## Proactive Notifications
 
-Context-aware, AI-generated notifications that leverage user data during real-time conversations. You provide a prompt template, Omi generates the personalized message.
+Context-aware, AI-generated notifications that leverage user data during real-time conversations. You provide a prompt template, Aura generates the personalized message.
 
 <Info>
 Unlike direct notifications, proactive notifications require an app with specific capabilities and user-granted permissions.
@@ -172,9 +172,9 @@ Unlike direct notifications, proactive notifications require an app with specifi
   </Accordion>
   <Accordion title="How It Works" icon="gear">
     1. User installs your app and grants permissions
-    2. During conversations, Omi sends transcripts to your webhook
+    2. During conversations, Aura sends transcripts to your webhook
     3. Your webhook analyzes the transcript and returns a prompt template
-    4. Omi fills in user context (name, facts, etc.) and generates the notification
+    4. Aura fills in user context (name, facts, etc.) and generates the notification
     5. User receives a personalized, contextual notification
   </Accordion>
 </AccordionGroup>
@@ -323,7 +323,7 @@ POST /your-webhook?session_id=abc123&uid=user123
 
 <Steps>
   <Step title="Enable Developer Mode" icon="code">
-    Open Omi app → Settings → Developer Mode
+    Open Aura app → Settings → Developer Mode
   </Step>
   <Step title="Install Your App" icon="download">
     Install your app in Developer Mode and grant requested scopes
@@ -381,7 +381,7 @@ POST /your-webhook?session_id=abc123&uid=user123
 | 401 | Unauthorized | Verify API credentials and Bearer token format |
 | 404 | User not found | Check that user ID exists and has your app installed |
 | 429 | Rate limited | Implement rate limiting with exponential backoff |
-| 500 | Server error | Retry with backoff, check Omi status page |
+| 500 | Server error | Retry with backoff, check Aura status page |
 
 <AccordionGroup>
   <Accordion title="Direct Notifications Not Sending" icon="circle-question">
@@ -419,7 +419,7 @@ POST /your-webhook?session_id=abc123&uid=user123
     Add authentication to your apps
   </Card>
   <Card title="Chat Tools" icon="wrench" href="/doc/developer/apps/ChatTools">
-    Add custom tools to Omi chat
+    Add custom tools to Aura chat
   </Card>
   <Card title="Submit Your App" icon="rocket" href="/doc/developer/apps/Submitting">
     Publish your app to the store

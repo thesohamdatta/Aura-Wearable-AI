@@ -168,7 +168,7 @@ void opus_process()
 
 uint8_t opus_get_codec_id()
 {
-    // Codec ID 20 = Opus (matching Omi protocol)
-    // Actually Omi uses CODEC_ID 21 for Opus
+    // Codec ID 20 = Opus (matching Aura protocol)
+    // Actually Aura uses CODEC_ID 21 for Opus
     return AUDIO_CODEC_ID;
 }

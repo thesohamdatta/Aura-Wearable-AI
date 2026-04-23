@@ -17,7 +17,7 @@ import asyncio
 
 os.environ.setdefault(
     "ENCRYPTION_SECRET",
-    "omi_ZwB2ZNqB2HHpMK6wStk7sTpavJiPTFg7gXUHnc4tFABPU6pZ2c2DKgehtfgi4RZv",
+    "aura_ZwB2ZNqB2HHpMK6wStk7sTpavJiPTFg7gXUHnc4tFABPU6pZ2c2DKgehtfgi4RZv",
 )
 
 
@@ -331,7 +331,7 @@ class TestNotificationsTracking:
             loop.close()
             assert captured_ctx.get('feature') == Features.SUBSCRIPTION_NOTIFICATION
             assert captured_ctx.get('uid') == "test-uid-notif"
-            assert result[0] == "omi"
+            assert result[0] == "aura"
         finally:
             mock_llm_medium.ainvoke = original_ainvoke
 
@@ -356,7 +356,7 @@ class TestNotificationsTracking:
             loop.close()
             assert captured_ctx.get('feature') == Features.SUBSCRIPTION_NOTIFICATION
             assert captured_ctx.get('uid') == "test-uid-credit"
-            assert result[0] == "omi"
+            assert result[0] == "aura"
         finally:
             mock_llm_medium.ainvoke = original_ainvoke
 

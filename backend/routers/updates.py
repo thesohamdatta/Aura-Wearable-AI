@@ -7,7 +7,7 @@ from xml.dom import minidom
 from fastapi import APIRouter, HTTPException, Header, Query
 from fastapi.responses import Response
 
-from routers.firmware import get_omi_github_releases, extract_key_value_pairs
+from routers.firmware import get_aura_github_releases, extract_key_value_pairs
 from database.redis_db import delete_generic_cache
 
 router = APIRouter()
@@ -122,8 +122,8 @@ def _get_sparkle_zip_download_url(release: Dict, version: str, platform: str) ->
     """
     assets = release.get("assets", [])
 
-    # Look for the Sparkle ZIP file: Omi.zip
-    expected_filename = f"Omi.zip"
+    # Look for the Sparkle ZIP file: Aura.zip
+    expected_filename = f"Aura.zip"
 
     for asset in assets:
         asset_name = asset.get("name", "")
@@ -133,7 +133,7 @@ def _get_sparkle_zip_download_url(release: Dict, version: str, platform: str) ->
     # Fallback: look for any zip file that matches the pattern
     for asset in assets:
         asset_name = asset.get("name", "")
-        if asset_name.endswith(f"Omi.zip"):
+        if asset_name.endswith(f"Aura.zip"):
             return asset.get("browser_download_url")
 
     return None
@@ -152,7 +152,7 @@ async def _get_live_desktop_releases(platform: str) -> List[Dict]:
     """
     # Fetch releases from GitHub
     cache_key = "github_releases_desktop"
-    releases = await get_omi_github_releases(cache_key)
+    releases = await get_aura_github_releases(cache_key)
 
     if not releases:
         return []
@@ -216,8 +216,8 @@ def _generate_appcast_xml(items: List[Dict], platform: str) -> str:
     rss = Element('rss', {'version': '2.0', 'xmlns:sparkle': 'http://www.andymatuschak.org/xml-namespaces/sparkle'})
 
     channel = SubElement(rss, 'channel')
-    SubElement(channel, 'title').text = 'Omi Desktop Updates'
-    SubElement(channel, 'description').text = 'Omi AI Desktop Application'
+    SubElement(channel, 'title').text = 'Aura Desktop Updates'
+    SubElement(channel, 'description').text = 'Aura AI Desktop Application'
     SubElement(channel, 'language').text = 'en'
 
     # Add each release
@@ -225,7 +225,7 @@ def _generate_appcast_xml(items: List[Dict], platform: str) -> str:
         item = SubElement(channel, 'item')
 
         version = release_item['version']
-        SubElement(item, 'title').text = f"Omi {version}"
+        SubElement(item, 'title').text = f"Aura {version}"
 
         # For macOS, version fields go at item level (not in enclosure)
         SubElement(item, '{http://www.andymatuschak.org/xml-namespaces/sparkle}version').text = str(

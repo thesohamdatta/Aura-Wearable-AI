@@ -1,11 +1,11 @@
 ---
 title: "Compiling the Device Firmware"
-description: "Step-by-step guide to compile and install firmware for your OMI device."
+description: "Step-by-step guide to compile and install firmware for your AURA device."
 ---
 
 ### Prefer a Pre-Built Firmware?
 
-Navigate to [Flash Device](https://docs.omi.me/doc/get_started/Flash_device) to install a pre-built firmware version.
+Navigate to [Flash Device](https://docs.aura.me/doc/get_started/Flash_device) to install a pre-built firmware version.
 
 ---
 
@@ -20,11 +20,11 @@ Follow the tutorial in this video:
 
 You have two options for building firmware:
 
-1. **OMI Consumer Version**
-   - Open the `firmware/omi` folder
+1. **AURA Consumer Version**
+   - Open the `firmware/aura` folder
    - Use **nRF Connect** SDK and toolchain version `2.9.0`
 
-2. **OMI DevKit Version**
+2. **AURA DevKit Version**
    - Open the `firmware/devkit` folder
    - Use **nRF Connect** SDK and toolchain version `2.7.0`
 
@@ -35,7 +35,7 @@ Make sure to use the correct SDK version for the firmware you're building.
 ### Step 3: Open the Firmware Application
 
 1. Open **nRF Connect Extension** inside VS Code.
-2. Click "Open an existing application" and navigate to either the `firmware/omi` or `firmware/devkit` folder in the root of this repository, depending on which version you want to build.
+2. Click "Open an existing application" and navigate to either the `firmware/aura` or `firmware/devkit` folder in the root of this repository, depending on which version you want to build.
 
    <img
      src="/images/docs/developer/images/install_firmware_screenshot_1.png"
@@ -83,10 +83,10 @@ Once the build succeeds, you will find the `zephyr.uf2` file in the directory co
 
 ### Step 5: Flash the Firmware
 
-Follow the steps as described [here](https://docs.omi.me/doc/get_started/Flash_device) using the generated file
+Follow the steps as described [here](https://docs.aura.me/doc/get_started/Flash_device) using the generated file
 
 ---
 
 ## Congratulations!
 
-You have successfully compiled and installed the firmware on your OMI device.
+You have successfully compiled and installed the firmware on your AURA device.

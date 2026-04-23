@@ -22,7 +22,7 @@ import database.folders as folders_db
 import database.calendar_meetings as calendar_db
 from database.vector_db import find_similar_memories, upsert_memory_vector, delete_memory_vector
 from utils.llm.memories import resolve_memory_conflict
-from database.apps import record_app_usage, get_omi_personas_by_uid_db, get_app_by_id_db
+from database.apps import record_app_usage, get_aura_personas_by_uid_db, get_app_by_id_db
 from database.vector_db import upsert_vector2, update_vector_metadata
 from models.app import App, UsageHistoryType
 from models.memories import MemoryDB, Memory
@@ -483,7 +483,7 @@ def send_new_memories_notification(user_id: str, memories: [MemoryDB]):
         navigate_to="/facts",
     )
 
-    send_notification(user_id, "omi" + ' says', message, NotificationMessage.get_message_as_dict(ai_message))
+    send_notification(user_id, "aura" + ' says', message, NotificationMessage.get_message_as_dict(ai_message))
 
 
 def _extract_trends(uid: str, conversation: Conversation):
@@ -582,7 +582,7 @@ def save_structured_vector(uid: str, conversation: Conversation, update_only: bo
 
 def _update_personas_async(uid: str):
     print(f"[PERSONAS] Starting persona updates in background thread for uid={uid}")
-    personas = get_omi_personas_by_uid_db(uid)
+    personas = get_aura_personas_by_uid_db(uid)
     if personas:
         threads = []
         for persona in personas:
@@ -922,7 +922,7 @@ def process_user_expression_measurement_callback(provider: str, request_id: str,
     print(f"Emotion Uid: {uid} {emotion}")
 
     # Ask llms about notification content
-    title = "omi"
+    title = "aura"
     context_str, _ = retrieve_rag_conversation_context(uid, conversation)
 
     response: str = obtain_emotional_message(uid, conversation, context_str, emotion)

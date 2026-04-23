@@ -150,7 +150,7 @@ gcloud compute firewall-rules create $ALLOW_PROXY_CONN_FIREWALL \
 
 #### 3. Create internal static IP address for ingress
 ```bash
-gcloud compute addresses create prod-omi-deepgram-ilb-ip-address \
+gcloud compute addresses create prod-aura-deepgram-ilb-ip-address \
   --region=$CLUSTER_LOCATION \
   --subnet=$CLUSTER_SUBNETWORK \
   --addresses=$DG_INTERNAL_LB_IP_ADDR
@@ -171,7 +171,7 @@ gcloud compute ssl-certificates create <CERT_NAME> \
 > **Notes:** Certificates bundle file must includes both SSL cert and CA certs
 
 #### 3. Create new DNS record for Deepgram self-hosted internal ALB
-`dg.omi.me` => Point to internal static IP address
+`dg.aura.me` => Point to internal static IP address
 
 ### V. Create Google-managed certificate and external IP for Grafana
 
@@ -186,11 +186,11 @@ gcloud compute addresses describe $DG_GRAFANA_ALB_IP_ADDR --global
 
 #### 2. Create Google-managed certificate for Grafana ALB
 ```bash
-kubectl apply -f prod_omi_deepgram_grafana_alb_cert.yaml
+kubectl apply -f prod_aura_deepgram_grafana_alb_cert.yaml
 ```
 
 #### 3. Create new DNS record for Grafana
-`dg-monitor.omi.me` => Point to above external IP address
+`dg-monitor.aura.me` => Point to above external IP address
 
 ## Steps to deploy self-hosted Deepgram to Kubernetes (GKE)
 
@@ -355,7 +355,7 @@ The deepgram-self-hosted Helm chart takes two Secret references:
 #### 1. Install the Helm Chart with your `values.yaml` file
 ```bash
 helm upgrade --install <HELM_RELEASE_NAME> ./deepgram-self-hosted \
-    -f ./deepgram-self-hosted/prod_omi_values.yaml \
+    -f ./deepgram-self-hosted/prod_aura_values.yaml \
     --namespace <DG_NAMESPACE> \
     --atomic \
     --timeout 1h

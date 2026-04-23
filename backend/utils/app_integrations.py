@@ -39,7 +39,7 @@ def _json_serialize_datetime(obj: Any) -> Any:
 PROACTIVE_NOTI_LIMIT_SECONDS = 30  # 1 noti / 30s
 
 
-def get_github_docs_content(repo="BasedHardware/omi", path="docs/doc"):
+def get_github_docs_content(repo="BasedHardware/aura", path="docs/doc"):
     """
     Recursively retrieves content from GitHub docs folder and subfolders using GitHub API.
     Returns a dict mapping file paths to their raw content.
@@ -305,14 +305,14 @@ def _trigger_realtime_integrations(uid: str, segments: List[dict], conversation_
     mentor_results = {}
     mentor_notification = process_mentor_notification(uid, segments)
     if mentor_notification:
-        # Create a virtual "Omi" app for processing
+        # Create a virtual "Aura" app for processing
         mentor_app = App(
             id='mentor',
-            name='Omi',
+            name='Aura',
             category='productivity',
-            author='Omi',
+            author='Aura',
             description='AI providing real-time guidance during conversations',
-            image='https://raw.githubusercontent.com/BasedHardware/Omi/main/assets/images/app_logo.png',
+            image='https://raw.githubusercontent.com/BasedHardware/Aura/main/assets/images/app_logo.png',
             capabilities={'proactive_notification'},
             enabled=True,
             proactive_notification_scopes=['user_name', 'user_facts', 'user_context', 'user_chat'],

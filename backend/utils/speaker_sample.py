@@ -16,7 +16,7 @@ from utils.text_utils import compute_text_containment
 
 MIN_WORDS = 5
 MIN_CONTAINMENT = 0.9
-MIN_DOMINANT_SPEAKER_RATIO = 0.7
+MIN_DAURANANT_SPEAKER_RATIO = 0.7
 
 
 async def verify_and_transcribe_sample(
@@ -29,7 +29,7 @@ async def verify_and_transcribe_sample(
 
     Checks:
     1. Transcription has at least MIN_WORDS words
-    2. Dominant speaker accounts for >= MIN_DOMINANT_SPEAKER_RATIO of words (via diarization)
+    2. Dominant speaker accounts for >= MIN_DAURANANT_SPEAKER_RATIO of words (via diarization)
     3. Transcribed text has >= MIN_CONTAINMENT containment in expected text (if provided)
 
     Args:
@@ -60,7 +60,7 @@ async def verify_and_transcribe_sample(
     dominant_count = max(speaker_counts.values()) if speaker_counts else 0
     dominant_ratio = dominant_count / total_words if total_words > 0 else 0
 
-    if dominant_ratio < MIN_DOMINANT_SPEAKER_RATIO:
+    if dominant_ratio < MIN_DAURANANT_SPEAKER_RATIO:
         return None, False, f"multi_speaker: ratio={dominant_ratio:.2f}"
 
     transcript = ' '.join(w.get('text', '') for w in words)

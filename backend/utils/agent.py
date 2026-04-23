@@ -10,16 +10,16 @@ from models.chat import Message, ChatSession, MessageType
 from utils.retrieval.graph import AsyncStreamingCallback
 from openai.types.responses import ResponseTextDeltaEvent
 
-# omi_documentation: dict = get_github_docs_content()
-# omi_documentation_str = "\n\n".join(
-#     [f"{k}:\n {v}" for k, v in omi_documentation.items()]
+# aura_documentation: dict = get_github_docs_content()
+# aura_documentation_str = "\n\n".join(
+#     [f"{k}:\n {v}" for k, v in aura_documentation.items()]
 # )
-omi_documentation_str = ""
-omi_documentation_prompt = f"""
-You are a helpful assistant that answers questions from the Omi documentation.
+aura_documentation_str = ""
+aura_documentation_prompt = f"""
+You are a helpful assistant that answers questions from the Aura documentation.
 
 Documentation:
-{omi_documentation_str}
+{aura_documentation_str}
 """
 
 
@@ -32,12 +32,12 @@ async def run(
     stream_callback: Optional[AsyncStreamingCallback] = None,
 ):
     docs_agent = Agent(
-        name="Omi Documentation Agent",
-        instructions=omi_documentation_prompt,
+        name="Aura Documentation Agent",
+        instructions=aura_documentation_prompt,
         model="o4-mini",
     )
-    omi_agent = Agent(
-        name="Omi Agent",
+    aura_agent = Agent(
+        name="Aura Agent",
         instructions=f"You are a helpful assistant that answers questions from the user {uid}, using the tools you were provided.",
         mcp_servers=[mcp_server],
         model="o4-mini",
@@ -47,13 +47,13 @@ async def run(
         tools=[
             docs_agent.as_tool(
                 tool_name="docs_agent",
-                tool_description="Answer user questions from the Omi documentation.",
+                tool_description="Answer user questions from the Aura documentation.",
             )
         ],
     )
 
     messages = [{"role": "assistant" if m.sender.value == "ai" else "user", "content": m.text} for m in messages]
-    result = Runner.run_streamed(starting_agent=omi_agent, input=messages)
+    result = Runner.run_streamed(starting_agent=aura_agent, input=messages)
     respond(result.final_output)
 
     async for event in result.stream_events():
@@ -79,7 +79,7 @@ async def execute_agent_chat_stream(
 
     async with MCPServerStdio(
         cache_tools_list=True,
-        params={"command": "uvx", "args": ["mcp-server-omi", "-v"]},
+        params={"command": "uvx", "args": ["mcp-server-aura", "-v"]},
     ) as server:
         task = asyncio.create_task(
             run(
@@ -118,9 +118,9 @@ async def execute_agent_chat_stream(
 async def send_single_message():
     async with MCPServerStdio(
         cache_tools_list=True,
-        params={"command": "uvx", "args": ["mcp-server-omi"]},
+        params={"command": "uvx", "args": ["mcp-server-aura"]},
     ) as server:
-        with trace(workflow_name="Omi Agent"):
+        with trace(workflow_name="Aura Agent"):
             await run(
                 server,
                 "viUv7GtdoHXbK1UBCDlPuTDuPgJ2",
@@ -130,19 +130,19 @@ async def send_single_message():
 
 
 async def interactive_chat_stream():
-    print("Starting interactive chat with Omi Agent. Type 'exit' to quit.")
+    print("Starting interactive chat with Aura Agent. Type 'exit' to quit.")
     async with MCPServerStdio(
         cache_tools_list=True,
-        params={"command": "uvx", "args": ["mcp-server-omi", "-v"]},
+        params={"command": "uvx", "args": ["mcp-server-aura", "-v"]},
     ) as server:
         while True:
             user_input = input("\nYou: ")
             if user_input.lower() == "exit":
                 break
 
-            print("\nOmi: ", end="", flush=True)
+            print("\nAura: ", end="", flush=True)
 
-            with trace(workflow_name="Omi Agent"):
+            with trace(workflow_name="Aura Agent"):
                 await run(
                     server,
                     "viUv7GtdoHXbK1UBCDlPuTDuPgJ2",

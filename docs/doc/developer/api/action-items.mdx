@@ -48,7 +48,7 @@ description: "Create and retrieve action items (tasks/to-dos) via the Developer 
   <Tab title="cURL">
     ```bash
     curl -H "Authorization: Bearer $API_KEY" \
-      "https://api.omi.me/v1/dev/user/action-items?completed=false&limit=50"
+      "https://api.aura.me/v1/dev/user/action-items?completed=false&limit=50"
     ```
   </Tab>
   <Tab title="Python">
@@ -56,7 +56,7 @@ description: "Create and retrieve action items (tasks/to-dos) via the Developer 
     import requests
 
     response = requests.get(
-        "https://api.omi.me/v1/dev/user/action-items",
+        "https://api.aura.me/v1/dev/user/action-items",
         headers={"Authorization": f"Bearer {API_KEY}"},
         params={"completed": False, "limit": 50}
     )
@@ -66,7 +66,7 @@ description: "Create and retrieve action items (tasks/to-dos) via the Developer 
   <Tab title="JavaScript">
     ```javascript
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/action-items?completed=false&limit=50",
+      "https://api.aura.me/v1/dev/user/action-items?completed=false&limit=50",
       { headers: { Authorization: `Bearer ${API_KEY}` } }
     );
     const actionItems = await response.json();
@@ -136,7 +136,7 @@ description: "Create and retrieve action items (tasks/to-dos) via the Developer 
 <Tabs>
   <Tab title="cURL">
     ```bash
-    curl -X POST "https://api.omi.me/v1/dev/user/action-items" \
+    curl -X POST "https://api.aura.me/v1/dev/user/action-items" \
       -H "Authorization: Bearer $API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -151,7 +151,7 @@ description: "Create and retrieve action items (tasks/to-dos) via the Developer 
     import requests
 
     response = requests.post(
-        "https://api.omi.me/v1/dev/user/action-items",
+        "https://api.aura.me/v1/dev/user/action-items",
         headers={
             "Authorization": f"Bearer {API_KEY}",
             "Content-Type": "application/json"
@@ -168,7 +168,7 @@ description: "Create and retrieve action items (tasks/to-dos) via the Developer 
   <Tab title="JavaScript">
     ```javascript
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/action-items",
+      "https://api.aura.me/v1/dev/user/action-items",
       {
         method: "POST",
         headers: {
@@ -203,7 +203,7 @@ description: "Create and retrieve action items (tasks/to-dos) via the Developer 
 </Accordion>
 
 <Tip>
-Push notifications are automatically sent to the Omi app if a `due_at` date is provided.
+Push notifications are automatically sent to the Aura app if a `due_at` date is provided.
 </Tip>
 
 ---
@@ -227,7 +227,7 @@ Push notifications are automatically sent to the Omi app if a `due_at` date is p
 <Tabs>
   <Tab title="cURL">
     ```bash
-    curl -X POST "https://api.omi.me/v1/dev/user/action-items/batch" \
+    curl -X POST "https://api.aura.me/v1/dev/user/action-items/batch" \
       -H "Authorization: Bearer $API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -243,7 +243,7 @@ Push notifications are automatically sent to the Omi app if a `due_at` date is p
     import requests
 
     response = requests.post(
-        "https://api.omi.me/v1/dev/user/action-items/batch",
+        "https://api.aura.me/v1/dev/user/action-items/batch",
         headers={
             "Authorization": f"Bearer {API_KEY}",
             "Content-Type": "application/json"
@@ -262,7 +262,7 @@ Push notifications are automatically sent to the Omi app if a `due_at` date is p
   <Tab title="JavaScript">
     ```javascript
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/action-items/batch",
+      "https://api.aura.me/v1/dev/user/action-items/batch",
       {
         method: "POST",
         headers: {
@@ -323,7 +323,7 @@ Push notifications are automatically sent to the Omi app if a `due_at` date is p
 <Tabs>
   <Tab title="cURL">
     ```bash
-    curl -X PATCH "https://api.omi.me/v1/dev/user/action-items/action_abc123" \
+    curl -X PATCH "https://api.aura.me/v1/dev/user/action-items/action_abc123" \
       -H "Authorization: Bearer $API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -337,7 +337,7 @@ Push notifications are automatically sent to the Omi app if a `due_at` date is p
 
     # Mark action item as completed
     response = requests.patch(
-        "https://api.omi.me/v1/dev/user/action-items/action_abc123",
+        "https://api.aura.me/v1/dev/user/action-items/action_abc123",
         headers={
             "Authorization": f"Bearer {API_KEY}",
             "Content-Type": "application/json"
@@ -352,7 +352,7 @@ Push notifications are automatically sent to the Omi app if a `due_at` date is p
     ```javascript
     // Mark action item as completed
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/action-items/action_abc123",
+      "https://api.aura.me/v1/dev/user/action-items/action_abc123",
       {
         method: "PATCH",
         headers: {
@@ -384,7 +384,7 @@ Push notifications are automatically sent to the Omi app if a `due_at` date is p
 </Accordion>
 
 <Tip>
-When updating `due_at`, a push notification is sent to the Omi app to remind the user.
+When updating `due_at`, a push notification is sent to the Aura app to remind the user.
 </Tip>
 
 ---
@@ -406,7 +406,7 @@ When updating `due_at`, a push notification is sent to the Omi app to remind the
 <Tabs>
   <Tab title="cURL">
     ```bash
-    curl -X DELETE "https://api.omi.me/v1/dev/user/action-items/action_abc123" \
+    curl -X DELETE "https://api.aura.me/v1/dev/user/action-items/action_abc123" \
       -H "Authorization: Bearer $API_KEY"
     ```
   </Tab>
@@ -415,7 +415,7 @@ When updating `due_at`, a push notification is sent to the Omi app to remind the
     import requests
 
     response = requests.delete(
-        "https://api.omi.me/v1/dev/user/action-items/action_abc123",
+        "https://api.aura.me/v1/dev/user/action-items/action_abc123",
         headers={"Authorization": f"Bearer {API_KEY}"}
     )
     result = response.json()
@@ -426,7 +426,7 @@ When updating `due_at`, a push notification is sent to the Omi app to remind the
   <Tab title="JavaScript">
     ```javascript
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/action-items/action_abc123",
+      "https://api.aura.me/v1/dev/user/action-items/action_abc123",
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${API_KEY}` }
@@ -456,14 +456,14 @@ This action is permanent. Deleted action items cannot be recovered.
 
 ## Use Case: Import Tasks
 
-Import tasks from an external task management system into Omi:
+Import tasks from an external task management system into Aura:
 
 <Tabs>
   <Tab title="Python">
     ```python
     import requests
 
-    API_KEY = "omi_dev_your_api_key"
+    API_KEY = "aura_dev_your_api_key"
 
     # Your tasks from another app
     external_tasks = [
@@ -472,7 +472,7 @@ Import tasks from an external task management system into Omi:
         {"title": "Review team feedback", "due": None, "done": True}
     ]
 
-    # Convert to Omi action items format
+    # Convert to Aura action items format
     action_items = [
         {
             "description": task["title"],
@@ -484,7 +484,7 @@ Import tasks from an external task management system into Omi:
 
     # Create batch
     response = requests.post(
-        "https://api.omi.me/v1/dev/user/action-items/batch",
+        "https://api.aura.me/v1/dev/user/action-items/batch",
         headers={"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"},
         json={"action_items": action_items}
     )
@@ -494,7 +494,7 @@ Import tasks from an external task management system into Omi:
   </Tab>
   <Tab title="JavaScript">
     ```javascript
-    const API_KEY = process.env.OMI_API_KEY;
+    const API_KEY = process.env.AURA_API_KEY;
 
     // Your tasks from another app
     const externalTasks = [
@@ -503,7 +503,7 @@ Import tasks from an external task management system into Omi:
       { title: "Review team feedback", due: null, done: true }
     ];
 
-    // Convert to Omi action items format
+    // Convert to Aura action items format
     const actionItems = externalTasks.map(task => ({
       description: task.title,
       due_at: task.due,
@@ -512,7 +512,7 @@ Import tasks from an external task management system into Omi:
 
     // Create batch
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/action-items/batch",
+      "https://api.aura.me/v1/dev/user/action-items/batch",
       {
         method: "POST",
         headers: {
@@ -538,18 +538,18 @@ Import tasks from an external task management system into Omi:
     ```bash
     # Get all incomplete action items
     curl -H "Authorization: Bearer $API_KEY" \
-      "https://api.omi.me/v1/dev/user/action-items?completed=false"
+      "https://api.aura.me/v1/dev/user/action-items?completed=false"
     ```
   </Tab>
   <Tab title="Python">
     ```python
     import requests
 
-    API_KEY = "omi_dev_your_api_key"
+    API_KEY = "aura_dev_your_api_key"
 
     # Get pending tasks
     response = requests.get(
-        "https://api.omi.me/v1/dev/user/action-items",
+        "https://api.aura.me/v1/dev/user/action-items",
         headers={"Authorization": f"Bearer {API_KEY}"},
         params={"completed": False, "limit": 100}
     )
@@ -564,10 +564,10 @@ Import tasks from an external task management system into Omi:
   </Tab>
   <Tab title="JavaScript">
     ```javascript
-    const API_KEY = process.env.OMI_API_KEY;
+    const API_KEY = process.env.AURA_API_KEY;
 
     const response = await fetch(
-      "https://api.omi.me/v1/dev/user/action-items?completed=false&limit=100",
+      "https://api.aura.me/v1/dev/user/action-items?completed=false&limit=100",
       { headers: { Authorization: `Bearer ${API_KEY}` } }
     );
 

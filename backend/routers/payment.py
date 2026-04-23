@@ -650,7 +650,7 @@ async def stripe_return(account_id: str):
     title = "Stripe Account Setup Complete" if onboarding_complete else "Stripe Account Setup Incomplete"
     message_class = "" if onboarding_complete else "error"
     message = (
-        "Your Stripe account has been successfully set up with Omi AI. You can now start receiving payments."
+        "Your Stripe account has been successfully set up with Aura AI. You can now start receiving payments."
         if onboarding_complete
         else "The account setup process was not completed. Please try again in a few minutes. If the issue persists, contact support."
     )

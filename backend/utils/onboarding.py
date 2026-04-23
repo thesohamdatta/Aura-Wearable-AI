@@ -18,8 +18,8 @@ ONBOARDING_QUESTIONS = [
 class OnboardingHandler:
     """Handles onboarding question flow via websocket"""
 
-    # Special speaker ID for Omi question segments (use 99 to avoid conflicts with real speakers)
-    OMI_SPEAKER_ID = 99
+    # Special speaker ID for Aura question segments (use 99 to avoid conflicts with real speakers)
+    AURA_SPEAKER_ID = 99
 
     def __init__(self, uid: str, send_message: Callable, stream_transcript: Optional[Callable] = None):
         self.uid = uid
@@ -64,8 +64,8 @@ class OnboardingHandler:
             'text': self.current_question['question'],
             'start': start_time,
             'end': end_time,
-            'speaker': f'SPEAKER_{self.OMI_SPEAKER_ID}',  # Use consistent format with STT output
-            'speaker_id': self.OMI_SPEAKER_ID,
+            'speaker': f'SPEAKER_{self.AURA_SPEAKER_ID}',  # Use consistent format with STT output
+            'speaker_id': self.AURA_SPEAKER_ID,
             'is_user': False,
             'person_id': None,
         }
@@ -85,10 +85,10 @@ class OnboardingHandler:
         # Update timing tracking
         self.update_segment_timing(segments)
 
-        # Accumulate transcript for current question (ignore Omi segments)
+        # Accumulate transcript for current question (ignore Aura segments)
         new_text = ' '.join(
             s.get('text', '') for s in segments
-            if s.get('speaker_id') != self.OMI_SPEAKER_ID
+            if s.get('speaker_id') != self.AURA_SPEAKER_ID
         ).strip()
         if new_text:
             if self.current_transcript:

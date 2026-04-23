@@ -30,7 +30,7 @@ def initial_chat_message(uid: str, plugin: Optional[App] = None, prev_messages_s
     user_name, memories_str = get_prompt_memories(uid)
     if plugin is None:
         prompt = f"""
-You are 'Omi', a friendly and helpful assistant who aims to make {user_name}'s life better 10x.
+You are 'Aura', a friendly and helpful assistant who aims to make {user_name}'s life better 10x.
 You know the following about {user_name}: {memories_str}.
 
 {prev_messages_str}
@@ -87,31 +87,31 @@ def requires_context(question: str) -> bool:
         return False
 
 
-class IsAnOmiQuestion(BaseModel):
-    value: bool = Field(description="If the message is an Omi/Friend related question")
+class IsAnAuraQuestion(BaseModel):
+    value: bool = Field(description="If the message is an Aura/Friend related question")
 
 
-def retrieve_is_an_omi_question(question: str) -> bool:
+def retrieve_is_an_aura_question(question: str) -> bool:
     prompt = f'''
-    Task: Determine if the user is asking about the Omi/Friend app itself (product features, functionality, purchasing) 
+    Task: Determine if the user is asking about the Aura/Friend app itself (product features, functionality, purchasing) 
     OR if they are asking about their personal data/memories stored in the app OR requesting an action/task.
 
     CRITICAL DISTINCTION:
-    - Questions ABOUT THE APP PRODUCT = True (e.g., "How does Omi work?", "What features does Omi have?")
+    - Questions ABOUT THE APP PRODUCT = True (e.g., "How does Aura work?", "What features does Aura have?")
     - Questions ABOUT USER'S PERSONAL DATA = False (e.g., "What did I say?", "How many conversations do I have?")
     - ACTION/TASK REQUESTS = False (e.g., "Remind me to...", "Create a task...", "Set an alarm...")
 
     **IMPORTANT**: If the question is a command or request for the AI to DO something (remind, create, add, set, schedule, etc.), 
-    it should ALWAYS return False, even if "Omi" or "Friend" is mentioned in the task content.
+    it should ALWAYS return False, even if "Aura" or "Friend" is mentioned in the task content.
 
-    Examples of Omi/Friend App Questions (return True):
-    - "How does Omi work?"
-    - "What can Omi do?"
+    Examples of Aura/Friend App Questions (return True):
+    - "How does Aura work?"
+    - "What can Aura do?"
     - "How can I buy the device?"
     - "Where do I get Friend?"
     - "What features does the app have?"
-    - "How do I set up Omi?"
-    - "Does Omi support multiple languages?"
+    - "How do I set up Aura?"
+    - "Does Aura support multiple languages?"
     - "What is the battery life?"
     - "How do I connect my device?"
 
@@ -126,27 +126,27 @@ def retrieve_is_an_omi_question(question: str) -> bool:
     - "When did I last talk to John?"
 
     Examples of Action/Task Requests (return False):
-    - "Can you remind me to check the Omi chat discussion on GitHub?"
-    - "Remind me to update the Omi firmware"
+    - "Can you remind me to check the Aura chat discussion on GitHub?"
+    - "Remind me to update the Aura firmware"
     - "Create a task to review Friend documentation"
-    - "Set an alarm for my Omi meeting"
-    - "Add to my list: check Omi updates"
+    - "Set an alarm for my Aura meeting"
+    - "Add to my list: check Aura updates"
     - "Schedule a reminder about the Friend app launch"
 
     KEY RULES: 
     1. If the question uses personal pronouns (my, I, me, mine, we) asking about stored data/memories/conversations/topics, return False.
     2. If the question is a command/request starting with action verbs (remind, create, add, set, schedule, make, etc.), return False.
-    3. Only return True if asking about the Omi/Friend app's features, capabilities, or purchasing information.
+    3. Only return True if asking about the Aura/Friend app's features, capabilities, or purchasing information.
 
     User's Question:
     {question}
     
-    Is this asking about the Omi/Friend app product itself?
+    Is this asking about the Aura/Friend app product itself?
     '''.replace(
         '    ', ''
     ).strip()
-    with_parser = llm_mini.with_structured_output(IsAnOmiQuestion)
-    response: IsAnOmiQuestion = with_parser.invoke(prompt)
+    with_parser = llm_mini.with_structured_output(IsAnAuraQuestion)
+    response: IsAnAuraQuestion = with_parser.invoke(prompt)
     try:
         return response.value
     except ValidationError:
@@ -267,13 +267,13 @@ def answer_simple_message_stream(uid: str, messages: List[Message], plugin: Opti
     return llm_medium_stream.invoke(prompt, {'callbacks': callbacks}).content
 
 
-def _get_answer_omi_question_prompt(messages: List[Message], context: str) -> str:
+def _get_answer_aura_question_prompt(messages: List[Message], context: str) -> str:
     conversation_history = Message.get_messages_as_string(
         messages, use_user_name_if_available=True, use_plugin_name_if_available=True
     )
 
     return f"""
-    You are an assistant for answering questions about the app Omi, also known as Friend.
+    You are an assistant for answering questions about the app Aura, also known as Friend.
     Continue the conversation, answering the question based on the context provided.
 
     Context:
@@ -290,13 +290,13 @@ def _get_answer_omi_question_prompt(messages: List[Message], context: str) -> st
     ).strip()
 
 
-def answer_omi_question(messages: List[Message], context: str) -> str:
-    prompt = _get_answer_omi_question_prompt(messages, context)
+def answer_aura_question(messages: List[Message], context: str) -> str:
+    prompt = _get_answer_aura_question_prompt(messages, context)
     return llm_mini.invoke(prompt).content
 
 
-def answer_omi_question_stream(messages: List[Message], context: str, callbacks: []) -> str:
-    prompt = _get_answer_omi_question_prompt(messages, context)
+def answer_aura_question_stream(messages: List[Message], context: str, callbacks: []) -> str:
+    prompt = _get_answer_aura_question_prompt(messages, context)
     return llm_mini_stream.invoke(prompt, {'callbacks': callbacks}).content
 
 
@@ -524,7 +524,7 @@ Keep this context in mind when answering their question.
 
     # Inline fallback prompt - used when LangSmith is unavailable
     base_prompt = f"""<assistant_role>
-You are Omi, an AI assistant & mentor for {user_name}. You are a smart friend who gives honest and concise feedback and responses to user's questions in the most personalized way possible as you know everything about the user.
+You are Aura, an AI assistant & mentor for {user_name}. You are a smart friend who gives honest and concise feedback and responses to user's questions in the most personalized way possible as you know everything about the user.
 </assistant_role>
 {goal_section}{file_context_section}{context_section}
 
@@ -764,7 +764,7 @@ def _get_agentic_qa_prompt_fallback(variables: dict) -> str:
     plugin_personality_hint = variables.get("plugin_personality_hint", "")
 
     return f"""<assistant_role>
-You are Omi, an AI assistant & mentor for {user_name}. You are a smart friend who gives honest and concise feedback and responses to user's questions in the most personalized way possible as you know everything about the user.
+You are Aura, an AI assistant & mentor for {user_name}. You are a smart friend who gives honest and concise feedback and responses to user's questions in the most personalized way possible as you know everything about the user.
 </assistant_role>
 {goal_section}{file_context_section}{context_section}
 

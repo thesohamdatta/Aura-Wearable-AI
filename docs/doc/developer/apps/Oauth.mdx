@@ -1,25 +1,25 @@
 ---
 title: "OAuth Authentication"
-description: "Integrate your application with Omi using OAuth 2.0 to securely access user data with explicit consent."
+description: "Integrate your application with Aura using OAuth 2.0 to securely access user data with explicit consent."
 ---
 
 ## Overview
 
-Omi uses an OAuth 2.0-like flow to allow third-party applications to access user data with explicit consent. This ensures users maintain control over their data and what applications can access.
+Aura uses an OAuth 2.0-like flow to allow third-party applications to access user data with explicit consent. This ensures users maintain control over their data and what applications can access.
 
 ```mermaid
 sequenceDiagram
     participant App as Your App
     participant User as User Browser
-    participant Omi as Omi Auth Server
+    participant Aura as Aura Auth Server
     participant Firebase as Firebase Auth
 
     App->>User: Redirect to /v1/oauth/authorize
-    User->>Omi: Visit authorization page
-    Omi->>Firebase: User logs in (Google/Apple)
-    Firebase-->>Omi: Firebase ID token
-    Omi->>Omi: Exchange token for uid
-    Omi->>User: Redirect to App Home URL
+    User->>Aura: Visit authorization page
+    Aura->>Firebase: User logs in (Google/Apple)
+    Firebase-->>Aura: Firebase ID token
+    Aura->>Aura: Exchange token for uid
+    Aura->>User: Redirect to App Home URL
     User->>App: ?uid=USER_ID&state=STATE
     App->>App: Store uid for API calls
 ```
@@ -41,7 +41,7 @@ Before implementing OAuth, ensure you have:
 
 <Steps>
   <Step title="Register Your App" icon="id-card">
-    Your app must be registered with Omi and have an **App ID**
+    Your app must be registered with Aura and have an **App ID**
   </Step>
   <Step title="Configure App Home URL" icon="link">
     Set your **App Home URL** in your app's settings - this is where users are redirected after authorization
@@ -56,11 +56,11 @@ Before implementing OAuth, ensure you have:
 ## OAuth Flow
 
 <Steps>
-  <Step title="Redirect User to Omi" icon="arrow-right">
-    Your app redirects the user to Omi's authorization endpoint:
+  <Step title="Redirect User to Aura" icon="arrow-right">
+    Your app redirects the user to Aura's authorization endpoint:
 
     ```
-    https://api.omi.me/v1/oauth/authorize?app_id=YOUR_APP_ID&state=YOUR_STATE
+    https://api.aura.me/v1/oauth/authorize?app_id=YOUR_APP_ID&state=YOUR_STATE
     ```
 
     | Parameter | Required | Description |
@@ -73,24 +73,24 @@ Before implementing OAuth, ensure you have:
     </Tip>
   </Step>
   <Step title="User Authenticates & Consents" icon="user-check">
-    On the Omi authorization page, the user:
+    On the Aura authorization page, the user:
 
     1. Logs in with their Firebase credentials (Google or Apple)
     2. Reviews the permissions your app is requesting
     3. Grants or denies access
 
     **Example permissions shown to users:**
-    - "Engage in chat conversations with Omi"
+    - "Engage in chat conversations with Aura"
     - "Access and manage your conversations"
     - "Process audio data in real-time"
     - "Create new conversations on your behalf"
     - "Access and read your stored memories"
   </Step>
   <Step title="Token Exchange" icon="arrows-rotate">
-    After user approval, Omi's authorization page handles the token exchange internally:
+    After user approval, Aura's authorization page handles the token exchange internally:
 
     ```http
-    POST https://api.omi.me/v1/oauth/token
+    POST https://api.aura.me/v1/oauth/token
     Content-Type: application/x-www-form-urlencoded
 
     firebase_id_token=FIREBASE_TOKEN&app_id=YOUR_APP_ID&state=YOUR_STATE
@@ -106,7 +106,7 @@ Before implementing OAuth, ensure you have:
     ```
 
     <Note>
-    This step is handled automatically by Omi's authorization page - you don't need to implement this yourself.
+    This step is handled automatically by Aura's authorization page - you don't need to implement this yourself.
     </Note>
   </Step>
   <Step title="User Redirected to Your App" icon="arrow-left">
@@ -146,9 +146,9 @@ Example implementation for handling the OAuth callback:
         state = secrets.token_urlsafe(32)
         pending_states[state] = True
 
-        # Redirect to Omi
+        # Redirect to Aura
         return RedirectResponse(
-            f"https://api.omi.me/v1/oauth/authorize"
+            f"https://api.aura.me/v1/oauth/authorize"
             f"?app_id=YOUR_APP_ID&state={state}"
         )
 
@@ -178,9 +178,9 @@ Example implementation for handling the OAuth callback:
       const state = crypto.randomBytes(32).toString('hex');
       pendingStates.set(state, true);
 
-      // Redirect to Omi
+      // Redirect to Aura
       res.redirect(
-        `https://api.omi.me/v1/oauth/authorize` +
+        `https://api.aura.me/v1/oauth/authorize` +
         `?app_id=YOUR_APP_ID&state=${state}`
       );
     });
@@ -206,11 +206,11 @@ Example implementation for handling the OAuth callback:
 
 ## Automatic App Enablement
 
-When a user completes the OAuth flow, Omi automatically attempts to enable your app for them.
+When a user completes the OAuth flow, Aura automatically attempts to enable your app for them.
 
 <AccordionGroup>
   <Accordion title="Enablement Checks" icon="list-check">
-    Omi performs several checks before enabling:
+    Aura performs several checks before enabling:
 
     | Check | Description |
     |-------|-------------|
@@ -223,7 +223,7 @@ When a user completes the OAuth flow, Omi automatically attempts to enable your 
   <Accordion title="Setup Completion Check" icon="gear">
     If your app requires setup (e.g., connecting to external services), configure a `setup_completed_url`:
 
-    **Request from Omi:**
+    **Request from Aura:**
     ```
     GET https://your-app.com/setup-status?uid=USER_ID
     ```
@@ -235,7 +235,7 @@ When a user completes the OAuth flow, Omi automatically attempts to enable your 
     }
     ```
 
-    Return `false` if the user hasn't completed setup yet. Omi will show an appropriate message.
+    Return `false` if the user hasn't completed setup yet. Aura will show an appropriate message.
   </Accordion>
   <Accordion title="Install Count" icon="chart-line">
     When a user successfully enables your public app through OAuth, the public install count is incremented (if applicable).
@@ -255,7 +255,7 @@ When a user completes the OAuth flow, Omi automatically attempts to enable your 
   </Card>
 </CardGroup>
 
-Configure these settings in the Omi developer portal or during app submission:
+Configure these settings in the Aura developer portal or during app submission:
 
 | Field | Location | Description |
 |-------|----------|-------------|
@@ -310,7 +310,7 @@ Never expose your App ID in client-side code where it could be extracted. While 
   <Accordion title="Setup completion check failing" icon="circle-question">
     **Possible causes:**
     - `setup_completed_url` returning `false` or error
-    - Endpoint not accessible from Omi servers
+    - Endpoint not accessible from Aura servers
     - JSON response malformed
 
     **Solution:** Test your endpoint directly and check server logs
@@ -326,7 +326,7 @@ Never expose your App ID in client-side code where it could be extracted. While 
     Build webhook-based integrations
   </Card>
   <Card title="Chat Tools" icon="wrench" href="/doc/developer/apps/ChatTools">
-    Add custom tools to Omi chat
+    Add custom tools to Aura chat
   </Card>
   <Card title="Notifications" icon="bell" href="/doc/developer/apps/Notifications">
     Send push notifications to users

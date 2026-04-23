@@ -27,9 +27,9 @@ else:
 speech_profiles_bucket = os.getenv('BUCKET_SPEECH_PROFILES')
 postprocessing_audio_bucket = os.getenv('BUCKET_POSTPROCESSING')
 memories_recordings_bucket = os.getenv('BUCKET_MEMORIES_RECORDINGS')
-private_cloud_sync_bucket = os.getenv('BUCKET_PRIVATE_CLOUD_SYNC', 'omi-private-cloud-sync')
+private_cloud_sync_bucket = os.getenv('BUCKET_PRIVATE_CLOUD_SYNC', 'aura-private-cloud-sync')
 syncing_local_bucket = os.getenv('BUCKET_TEMPORAL_SYNC_LOCAL')
-omi_apps_bucket = os.getenv('BUCKET_PLUGINS_LOGOS')
+aura_apps_bucket = os.getenv('BUCKET_PLUGINS_LOGOS')
 app_thumbnails_bucket = os.getenv('BUCKET_APP_THUMBNAILS')
 chat_files_bucket = os.getenv('BUCKET_CHAT_FILES')
 desktop_updates_bucket = os.getenv('BUCKET_DESKTOP_UPDATES')
@@ -774,17 +774,17 @@ def _get_signed_url(blob, minutes):
 
 
 def upload_app_logo(file_path: str, app_id: str):
-    bucket = storage_client.bucket(omi_apps_bucket)
+    bucket = storage_client.bucket(aura_apps_bucket)
     path = f'{app_id}.png'
     blob = bucket.blob(path)
     blob.cache_control = 'public, no-cache'
     blob.upload_from_filename(file_path)
-    return f'https://storage.googleapis.com/{omi_apps_bucket}/{path}'
+    return f'https://storage.googleapis.com/{aura_apps_bucket}/{path}'
 
 
 def delete_app_logo(img_url: str):
-    bucket = storage_client.bucket(omi_apps_bucket)
-    path = img_url.split(f'https://storage.googleapis.com/{omi_apps_bucket}/')[1]
+    bucket = storage_client.bucket(aura_apps_bucket)
+    path = img_url.split(f'https://storage.googleapis.com/{aura_apps_bucket}/')[1]
     print('delete_app_logo', path)
     blob = bucket.blob(path)
     blob.delete()

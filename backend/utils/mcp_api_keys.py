@@ -9,9 +9,9 @@ def generate_api_key() -> Tuple[str, str, str]:
     Returns a tuple of (raw_key, hashed_key, key_prefix).
     """
     secret_part = secrets.token_hex(16)
-    raw_key = f"omi_mcp_{secret_part}"
+    raw_key = f"aura_mcp_{secret_part}"
     hashed_key = hash_api_key(secret_part)
-    key_prefix = f"omi_mcp_{secret_part[:4]}...{secret_part[-4:]}"
+    key_prefix = f"aura_mcp_{secret_part[:4]}...{secret_part[-4:]}"
     return raw_key, hashed_key, key_prefix
 
 

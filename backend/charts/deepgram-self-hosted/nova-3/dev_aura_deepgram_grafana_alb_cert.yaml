@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: dev-aura-deepgram-grafana-alb-cert
+spec:
+  domains:
+    - dg-monitor.auraapi.com

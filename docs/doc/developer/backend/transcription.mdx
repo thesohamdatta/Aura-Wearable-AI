@@ -1,15 +1,15 @@
 ---
 title: "Real-time Transcription"
-description: "A comprehensive guide to Omi's real-time audio transcription system, covering WebSocket connections, STT providers, speaker diarization, message formats, and building external custom STT services."
+description: "A comprehensive guide to Aura's real-time audio transcription system, covering WebSocket connections, STT providers, speaker diarization, message formats, and building external custom STT services."
 ---
 
 ## Overview
 
-Omi's transcription system provides **real-time speech-to-text** conversion with speaker identification, multiple language support, and seamless integration with the conversation processing pipeline.
+Aura's transcription system provides **real-time speech-to-text** conversion with speaker identification, multiple language support, and seamless integration with the conversation processing pipeline.
 
 ```mermaid
 flowchart LR
-    subgraph Client["📱 Omi App"]
+    subgraph Client["📱 Aura App"]
         Audio[Audio Capture]
     end
 
@@ -57,7 +57,7 @@ WebSocket connections require Firebase authentication. The `uid` parameter must 
 ### Endpoint URL
 
 ```
-wss://api.omi.me/v4/listen?uid={uid}&language={lang}&sample_rate={rate}&codec={codec}
+wss://api.aura.me/v4/listen?uid={uid}&language={lang}&sample_rate={rate}&codec={codec}
 ```
 
 ### Query Parameters
@@ -129,7 +129,7 @@ wss://api.omi.me/v4/listen?uid={uid}&language={lang}&sample_rate={rate}&codec={c
   <Accordion title="source" icon="mobile">
     **Type:** `string` | **Optional**
 
-    Conversation source identifier. Examples: `'omi'`, `'openglass'`, `'phone'`
+    Conversation source identifier. Examples: `'aura'`, `'openglass'`, `'phone'`
   </Accordion>
 </AccordionGroup>
 
@@ -192,11 +192,11 @@ When using Deepgram, the following options are configured:
 
 ## External Custom STT Service
 
-Build your own transcription/diarization WebSocket service that integrates with Omi.
+Build your own transcription/diarization WebSocket service that integrates with Aura.
 
 ```mermaid
 flowchart LR
-    subgraph App["📱 Omi App"]
+    subgraph App["📱 Aura App"]
         Capture[Audio Capture]
     end
 
@@ -204,7 +204,7 @@ flowchart LR
         WS[WebSocket Server]
     end
 
-    subgraph Backend["🖥️ Omi Backend"]
+    subgraph Backend["🖥️ Aura Backend"]
         API["/v4/listen"]
     end
 
@@ -270,7 +270,7 @@ When a user has a speech profile, the system uses a sophisticated dual-socket ar
 
 ```mermaid
 sequenceDiagram
-    participant App as 📱 Omi App
+    participant App as 📱 Aura App
     participant Backend as 🖥️ Backend
     participant Socket1 as 🎧 Deepgram Socket 1
     participant Socket2 as 🎧 Deepgram Socket 2

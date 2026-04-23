@@ -40,7 +40,7 @@ from database.apps import (
     get_persona_by_username_db,
     migrate_app_owner_id_db,
     get_user_persona_by_uid,
-    get_omi_persona_apps_by_uid_db,
+    get_aura_persona_apps_by_uid_db,
     create_api_key_db,
     list_api_keys_db,
     delete_api_key_db,
@@ -159,7 +159,7 @@ def get_apps_v2(
     limit: int = Query(default=20, ge=1, le=50),
     include_reviews: bool = Query(default=False),
 ):
-    """Public omi apps, paginated by capability groups.
+    """Public aura apps, paginated by capability groups.
 
     Notes:
     - Uses approved public apps only (no private/tester apps).
@@ -504,7 +504,7 @@ async def create_persona(
     save_username(data['username'], uid)
 
     if 'connected_accounts' not in data or data['connected_accounts'] is None:
-        data['connected_accounts'] = ['omi']
+        data['connected_accounts'] = ['aura']
     data['persona_prompt'] = await generate_persona_prompt(uid, data)
     data['description'] = generate_persona_desc(uid, data['name'])
     os.makedirs(f'_temp/apps', exist_ok=True)
@@ -558,8 +558,8 @@ async def update_persona(
     data['description'] = generate_persona_desc(uid, data['name'])
     data['updated_at'] = datetime.now(timezone.utc)
 
-    # Update 'omi' connected_accounts
-    if 'omi' in data.get('connected_accounts', []) and 'omi' not in persona.get('connected_accounts', []):
+    # Update 'aura' connected_accounts
+    if 'aura' in data.get('connected_accounts', []) and 'aura' not in persona.get('connected_accounts', []):
         data['persona_prompt'] = await generate_persona_prompt(uid, persona)
 
     try:
@@ -624,7 +624,7 @@ async def get_or_create_user_persona(uid: str = Depends(auth.get_current_user_ui
         'status': 'under-review',
         'category': 'personality-emulation',
         'capabilities': ['persona'],
-        'connected_accounts': ['omi'],
+        'connected_accounts': ['aura'],
         'created_at': datetime.now(timezone.utc),
         'private': True,
     }
@@ -954,32 +954,32 @@ def get_app_capabilities():
                 {
                     'title': 'Create conversations',
                     'id': 'create_conversation',
-                    'doc_url': 'https://docs.omi.me/doc/developer/apps/Import',
-                    'description': 'Extend user conversations by making a POST request to the OMI System.',
+                    'doc_url': 'https://docs.aura.me/doc/developer/apps/Import',
+                    'description': 'Extend user conversations by making a POST request to the AURA System.',
                 },
                 {
                     'title': 'Create memories',
                     'id': 'create_facts',
-                    'doc_url': 'https://docs.omi.me/doc/developer/apps/Import',
-                    'description': 'Create new memories for the user through the OMI System.',
+                    'doc_url': 'https://docs.aura.me/doc/developer/apps/Import',
+                    'description': 'Create new memories for the user through the AURA System.',
                 },
                 {
                     'title': 'Read conversations',
                     'id': 'read_conversations',
-                    'doc_url': 'https://docs.omi.me/doc/developer/apps/Import',
-                    'description': 'Access and read all user conversations through the OMI System. This gives the app access to all conversation history.',
+                    'doc_url': 'https://docs.aura.me/doc/developer/apps/Import',
+                    'description': 'Access and read all user conversations through the AURA System. This gives the app access to all conversation history.',
                 },
                 {
                     'title': 'Read memories',
                     'id': 'read_memories',
-                    'doc_url': 'https://docs.omi.me/doc/developer/apps/Import',
-                    'description': 'Access and read all user memories through the OMI System. This gives the app access to all stored memories.',
+                    'doc_url': 'https://docs.aura.me/doc/developer/apps/Import',
+                    'description': 'Access and read all user memories through the AURA System. This gives the app access to all stored memories.',
                 },
                 {
                     'title': 'Read tasks',
                     'id': 'read_tasks',
-                    'doc_url': 'https://docs.omi.me/doc/developer/apps/Import',
-                    'description': 'Access and read all user tasks (to-dos) through the OMI System. This gives the app access to all stored tasks.',
+                    'doc_url': 'https://docs.aura.me/doc/developer/apps/Import',
+                    'description': 'Access and read all user tasks (to-dos) through the AURA System. This gives the app access to all stored tasks.',
                 },
             ],
         },
@@ -1272,21 +1272,21 @@ async def migrate_app_owner(old_id, uid: str = Depends(auth.get_current_user_uid
 
     # Start async tasks to migrate memories and update persona connected accounts
     asyncio.create_task(migrate_memories(old_id, uid))
-    asyncio.create_task(update_omi_persona_connected_accounts(uid))
+    asyncio.create_task(update_aura_persona_connected_accounts(uid))
 
     return {"status": "ok", "message": "Migration started"}
 
 
-async def update_omi_persona_connected_accounts(uid: str):
+async def update_aura_persona_connected_accounts(uid: str):
     try:
         # Get all personas owned by the user
-        personas = get_omi_persona_apps_by_uid_db(uid)
+        personas = get_aura_persona_apps_by_uid_db(uid)
 
-        # Update each persona to add 'omi' to connected_accounts
+        # Update each persona to add 'aura' to connected_accounts
         for persona in personas:
             connected_accounts = persona.get('connected_accounts', [])
-            if 'omi' not in connected_accounts:
-                connected_accounts.append('omi')
+            if 'aura' not in connected_accounts:
+                connected_accounts.append('aura')
 
                 # Update the persona with the new connected_accounts
                 update_data = persona

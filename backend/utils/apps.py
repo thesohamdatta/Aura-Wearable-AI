@@ -30,7 +30,7 @@ from database.apps import (
     get_audio_apps_count,
     get_persona_by_uid_db,
     update_persona_in_db,
-    get_omi_personas_by_uid_db,
+    get_aura_personas_by_uid_db,
     get_api_key_by_hash_db,
     get_popular_apps_db,
 )
@@ -581,8 +581,8 @@ def get_persona_by_uid(uid: str):
     return None
 
 
-def get_omi_personas_by_uid(uid: str):
-    personas = get_omi_personas_by_uid_db(uid)
+def get_aura_personas_by_uid(uid: str):
+    personas = get_aura_personas_by_uid_db(uid)
     if personas:
         return personas
     return None
@@ -683,7 +683,7 @@ def update_personas_async(uid: str):
         return
 
     print(f"[PERSONAS] Starting persona updates in background thread for uid={uid}")
-    personas = get_omi_personas_by_uid_db(uid)
+    personas = get_aura_personas_by_uid_db(uid)
     if personas:
         set_persona_update_timestamp(uid)
 
@@ -1276,7 +1276,7 @@ def fetch_app_chat_tools_from_manifest(manifest_url: str, timeout: int = 10) -> 
     tool definitions with: name, description, endpoint, method, parameters, auth_required, status_message.
 
     Args:
-        manifest_url: Full URL to the manifest endpoint (e.g., https://my-app.com/.well-known/omi-tools.json)
+        manifest_url: Full URL to the manifest endpoint (e.g., https://my-app.com/.well-known/aura-tools.json)
         timeout: Request timeout in seconds
 
     Returns:
@@ -1312,7 +1312,7 @@ def fetch_app_chat_tools_from_manifest(manifest_url: str, timeout: int = 10) -> 
         print(f"📥 Fetching chat tools manifest from: {manifest_url}")
 
         response = requests.get(
-            manifest_url, timeout=timeout, headers={'Accept': 'application/json', 'User-Agent': 'Omi-App-Store/1.0'}
+            manifest_url, timeout=timeout, headers={'Accept': 'application/json', 'User-Agent': 'Aura-App-Store/1.0'}
         )
 
         if response.status_code != 200:

@@ -23,15 +23,15 @@ from models.chat import ChatSession, Message, PageContext
 from models.conversation import Conversation
 from models.other import Person
 from utils.llm.chat import (
-    answer_omi_question,
-    answer_omi_question_stream,
+    answer_aura_question,
+    answer_aura_question_stream,
     requires_context,
     answer_simple_message,
     answer_simple_message_stream,
     retrieve_context_dates_by_question,
     qa_rag,
     qa_rag_stream,
-    retrieve_is_an_omi_question,
+    retrieve_is_an_aura_question,
     retrieve_is_file_question,
     select_structured_filters,
     extract_question_from_conversation,
@@ -171,8 +171,8 @@ def no_context_conversation(state: GraphState):
     return {"answer": answer, "ask_for_nps": False}
 
 
-def omi_question(state: GraphState):
-    print("no_context_omi_question node")
+def aura_question(state: GraphState):
+    print("no_context_aura_question node")
 
     context: dict = get_github_docs_content()
     context_str = 'Documentation:\n\n'.join([f'{k}:\n {v}' for k, v in context.items()])
@@ -181,13 +181,13 @@ def omi_question(state: GraphState):
     streaming = state.get("streaming")
     if streaming:
         # state['callback'].put_thought_nowait("Reasoning")
-        answer: str = answer_omi_question_stream(
+        answer: str = answer_aura_question_stream(
             state.get("messages", []), context_str, callbacks=[state.get('callback')]
         )
         return {'answer': answer, 'ask_for_nps': True}
 
     # no streaming
-    answer = answer_omi_question(state.get("messages", []), context_str)
+    answer = answer_aura_question(state.get("messages", []), context_str)
     return {'answer': answer, 'ask_for_nps': True}
 
 
@@ -446,14 +446,14 @@ workflow.add_node("determine_conversation", determine_conversation)
 workflow.add_conditional_edges("determine_conversation", determine_conversation_type)
 
 workflow.add_node("no_context_conversation", no_context_conversation)
-# workflow.add_node("omi_question", omi_question)
+# workflow.add_node("aura_question", aura_question)
 # workflow.add_node("context_dependent_conversation", context_dependent_conversation)
 workflow.add_node("agentic_context_dependent_conversation", agentic_context_dependent_conversation)
 # workflow.add_node("file_chat_question", file_chat_question)
 workflow.add_node("persona_question", persona_question)
 
 workflow.add_edge("no_context_conversation", END)
-# workflow.add_edge("omi_question", END)
+# workflow.add_edge("aura_question", END)
 workflow.add_edge("persona_question", END)
 # workflow.add_edge("file_chat_question", END)
 workflow.add_edge("agentic_context_dependent_conversation", END)

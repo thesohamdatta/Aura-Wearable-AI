@@ -102,9 +102,9 @@ def get_user_and_scopes_by_api_key(api_key: str) -> Optional[dict]:
     Returns dict with 'user_id' and 'scopes' keys, or None if invalid.
     If scopes don't exist in the database, returns None (treated as read-only by has_scope).
     """
-    if not api_key.startswith("omi_dev_"):
+    if not api_key.startswith("aura_dev_"):
         return None
-    secret_part = api_key.replace("omi_dev_", "", 1)
+    secret_part = api_key.replace("aura_dev_", "", 1)
     hashed_key = hash_dev_api_key(secret_part)
 
     # Check cache first

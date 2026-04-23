@@ -1,19 +1,19 @@
 ---
-title: "Building Apps for Omi"
-description: "Create apps that extend Omi's capabilities - from custom AI personalities to real-time integrations. Publish to the app store and earn from your creations."
+title: "Building Apps for Aura"
+description: "Create apps that extend Aura's capabilities - from custom AI personalities to real-time integrations. Publish to the app store and earn from your creations."
 ---
 
-## What Are Omi Apps?
+## What Are Aura Apps?
 
-Omi apps are modular extensions that augment the core functionality of the Omi platform. They can modify AI behavior, analyze conversations, and connect with external services.
+Aura apps are modular extensions that augment the core functionality of the Aura platform. They can modify AI behavior, analyze conversations, and connect with external services.
 
 ```mermaid
 flowchart LR
-    subgraph Device["📱 Omi Device"]
+    subgraph Device["📱 Aura Device"]
         Audio[Audio Stream]
     end
 
-    subgraph Backend["🖥️ Omi Backend"]
+    subgraph Backend["🖥️ Aura Backend"]
         Trans[Transcription]
         Mem[Memory Creation]
         Chat[Chat System]
@@ -42,7 +42,7 @@ flowchart LR
     Process live transcripts as conversations happen
   </Card>
   <Card title="External Integrations" icon="plug">
-    Connect Omi to Slack, Notion, GitHub, and any external service
+    Connect Aura to Slack, Notion, GitHub, and any external service
   </Card>
   <Card title="Earn Revenue" icon="coins">
     Publish to the app store and monetize your creations
@@ -53,13 +53,13 @@ flowchart LR
 
 ## Prompt-Based Apps
 
-Customize how Omi thinks and responds - **no server required!**
+Customize how Aura thinks and responds - **no server required!**
 
 <CardGroup cols={2}>
   <Card title="Chat Prompts" icon="comment" href="/doc/developer/apps/PromptBased">
-    Alter Omi's conversational style and knowledge base. Create expert personas, custom assistants, or specialized advisors.
+    Alter Aura's conversational style and knowledge base. Create expert personas, custom assistants, or specialized advisors.
 
-    **Example:** Make Omi communicate like a fitness coach or financial advisor
+    **Example:** Make Aura communicate like a fitness coach or financial advisor
   </Card>
   <Card title="Memory Prompts" icon="brain" href="/doc/developer/apps/PromptBased">
     Customize how conversations are analyzed and summarized. Extract specific information based on your criteria.
@@ -76,7 +76,7 @@ Prompt-based apps are the easiest to create - just define your prompt and you're
 
 ## Integration Apps
 
-Connect Omi to external services with webhooks and APIs.
+Connect Aura to external services with webhooks and APIs.
 
 <CardGroup cols={2}>
   <Card title="Memory Triggers" icon="bell" href="/doc/developer/apps/Integrations">
@@ -90,7 +90,7 @@ Connect Omi to external services with webhooks and APIs.
     **Example:** Trigger smart home actions or live coaching feedback
   </Card>
   <Card title="Chat Tools" icon="wrench" href="/doc/developer/apps/ChatTools">
-    Add custom tools that users can invoke in Omi chat.
+    Add custom tools that users can invoke in Aura chat.
 
     **Example:** "Send a message to #general in Slack" or "Create a GitHub issue"
   </Card>
@@ -102,7 +102,7 @@ Connect Omi to external services with webhooks and APIs.
 </CardGroup>
 
 <Info>
-Integration apps require a server endpoint (webhook) to receive data from Omi.
+Integration apps require a server endpoint (webhook) to receive data from Aura.
 </Info>
 
 ---
@@ -119,11 +119,11 @@ Test the integration flow without writing any server code.
       <img src="https://github.com/user-attachments/assets/083a6ec4-4694-4c7a-843a-4a1a0c254453" alt="Copy webhook URL" />
     </Frame>
   </Step>
-  <Step title="Download the Omi App" icon="mobile">
+  <Step title="Download the Aura App" icon="mobile">
     Get the app from the [App Store](https://apps.apple.com/us/app/friend-ai-wearable/id6502156163) or [Google Play](https://play.google.com/store/apps/details?id=com.friend.ios).
   </Step>
   <Step title="Create Your App" icon="plus">
-    In the Omi app: **Explore → Create an App**
+    In the Aura app: **Explore → Create an App**
 
     <Note>
     If you don't see "Explore", go to Settings and select "Connect Device" first.
@@ -146,35 +146,35 @@ Test the integration flow without writing any server code.
 Learn from real apps built by the community.
 
 <CardGroup cols={2}>
-  <Card title="Hey Omi" icon="bell" href="https://h.omi.me/apps/hey-omi-01JCZJQWAZ1J6PYNDW4S15Y5JD">
+  <Card title="Hey Aura" icon="bell" href="https://h.aura.me/apps/hey-aura-01JCZJQWAZ1J6PYNDW4S15Y5JD">
     Ask questions and get answers via notification in real-time.
 
-    [View Source Code →](https://github.com/BasedHardware/omi/blob/main/plugins/example/notifications/hey_omi.py)
+    [View Source Code →](https://github.com/BasedHardware/aura/blob/main/plugins/example/notifications/hey_aura.py)
   </Card>
-  <Card title="Omi Mentor" icon="graduation-cap" href="https://h.omi.me/apps/omi-your-mentor-and-teacher-01JCPRSZ7FS40FHFNSJZEWR8R1">
+  <Card title="Aura Mentor" icon="graduation-cap" href="https://h.aura.me/apps/aura-your-mentor-and-teacher-01JCPRSZ7FS40FHFNSJZEWR8R1">
     Proactive AI mentor that provides guidance during conversations.
 
-    [View Source Code →](https://github.com/BasedHardware/omi/blob/main/plugins/example/notifications/mentor/main.py)
+    [View Source Code →](https://github.com/BasedHardware/aura/blob/main/plugins/example/notifications/mentor/main.py)
   </Card>
-  <Card title="Slack Integration" icon="hashtag" href="https://h.omi.me/apps/01K7GFKJ2JJVYH7868HW81GY7X">
+  <Card title="Slack Integration" icon="hashtag" href="https://h.aura.me/apps/01K7GFKJ2JJVYH7868HW81GY7X">
     Post conversation summaries and memories to Slack channels.
 
-    [View Source Code →](https://github.com/BasedHardware/omi-slack-app)
+    [View Source Code →](https://github.com/BasedHardware/aura-slack-app)
   </Card>
-  <Card title="Zapier" icon="zap" href="https://h.omi.me/apps/zapier">
-    Connect Omi to 5000+ apps through Zapier automations.
+  <Card title="Zapier" icon="zap" href="https://h.aura.me/apps/zapier">
+    Connect Aura to 5000+ apps through Zapier automations.
 
-    [View Source Code →](https://github.com/BasedHardware/omi/tree/main/plugins/example/zapier)
+    [View Source Code →](https://github.com/BasedHardware/aura/tree/main/plugins/example/zapier)
   </Card>
-  <Card title="GitHub" icon="github" href="https://h.omi.me/apps/01K7BHKJR79KQQW7ZZGZX7GCGD">
+  <Card title="GitHub" icon="github" href="https://h.aura.me/apps/01K7BHKJR79KQQW7ZZGZX7GCGD">
     Create issues and manage PRs from your conversations.
 
-    [View Source Code →](https://github.com/aaravgarg/omi-github-app)
+    [View Source Code →](https://github.com/aaravgarg/aura-github-app)
   </Card>
-  <Card title="RingCentral" icon="phone" href="https://h.omi.me/apps/01K7TCGJE6HQA7HS8S87R7585J">
-    Integrate Omi with RingCentral communications.
+  <Card title="RingCentral" icon="phone" href="https://h.aura.me/apps/01K7TCGJE6HQA7HS8S87R7585J">
+    Integrate Aura with RingCentral communications.
 
-    [View Source Code →](https://github.com/BasedHardware/omi-ringcentral-app)
+    [View Source Code →](https://github.com/BasedHardware/aura-ringcentral-app)
   </Card>
 </CardGroup>
 
@@ -190,7 +190,7 @@ Learn from real apps built by the community.
     Build webhooks for memory triggers and real-time transcript processing
   </Card>
   <Card title="Chat Tools Guide" icon="wrench" href="/doc/developer/apps/ChatTools">
-    Add custom tools that users can invoke in Omi conversations
+    Add custom tools that users can invoke in Aura conversations
   </Card>
 </CardGroup>
 
@@ -199,7 +199,7 @@ Learn from real apps built by the community.
     Process raw audio bytes for custom STT or audio analysis
   </Card>
   <Card title="Submit Your App" icon="rocket" href="/doc/developer/apps/Submitting">
-    Publish your app to the Omi app store
+    Publish your app to the Aura app store
   </Card>
 </CardGroup>
 
@@ -209,7 +209,7 @@ Learn from real apps built by the community.
 
 <AccordionGroup>
   <Accordion title="Memory Creation Triggers" icon="bell">
-    Learn how to build apps that trigger when Omi creates a new memory.
+    Learn how to build apps that trigger when Aura creates a new memory.
 
     <iframe
       width="560"

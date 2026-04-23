@@ -45,9 +45,9 @@ class GeneratedAppData(BaseModel):
     memory_prompt: Optional[str] = None
 
 
-SYSTEM_PROMPT = """You are an expert app designer for Omi, an AI-powered wearable device that records conversations and provides intelligent insights.
+SYSTEM_PROMPT = """You are an expert app designer for Aura, an AI-powered wearable device that records conversations and provides intelligent insights.
 
-Your task is to design an app based on the user's description. Apps in Omi can have two main capabilities:
+Your task is to design an app based on the user's description. Apps in Aura can have two main capabilities:
 
 1. **Chat Apps** (capability: "chat"): These apps allow users to chat with an AI persona or assistant. They require a `chat_prompt` that defines the personality, expertise, and behavior of the chat assistant. Chat apps are great for:
    - AI personas (like cloning a celebrity or expert)

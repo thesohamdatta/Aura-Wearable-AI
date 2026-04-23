@@ -111,15 +111,15 @@ async def test_stream():
         # ),
         # uid=uid,
         # data=chat_models.SendMessageRequest(
-        #   text="remind me to check the omi chat discussion on github",
+        #   text="remind me to check the aura chat discussion on github",
         #   file_ids=[],  # ['x']
         # ),
         # uid=uid,
         #
-        # OMI docs
+        # AURA docs
         #
         # data=chat_models.SendMessageRequest(
-        #    text="how to flash the omi consumer cv1 firmware ?",
+        #    text="how to flash the aura consumer cv1 firmware ?",
         #    file_ids=[],  # ['x']
         # ),
         # uid=uid,

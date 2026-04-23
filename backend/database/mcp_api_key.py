@@ -74,9 +74,9 @@ def get_user_id_by_api_key(api_key: str) -> Optional[str]:
     Uses a cache to avoid frequent database lookups.
     Also updates the last_used_at timestamp on cache miss.
     """
-    if not api_key.startswith("omi_mcp_"):
+    if not api_key.startswith("aura_mcp_"):
         return None
-    secret_part = api_key.replace("omi_mcp_", "", 1)
+    secret_part = api_key.replace("aura_mcp_", "", 1)
     hashed_key = hash_api_key(secret_part)
 
     # Check cache first

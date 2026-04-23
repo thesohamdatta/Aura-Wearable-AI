@@ -14,7 +14,7 @@ import pytest
 
 os.environ.setdefault(
     "ENCRYPTION_SECRET",
-    "omi_ZwB2ZNqB2HHpMK6wStk7sTpavJiPTFg7gXUHnc4tFABPU6pZ2c2DKgehtfgi4RZv",
+    "aura_ZwB2ZNqB2HHpMK6wStk7sTpavJiPTFg7gXUHnc4tFABPU6pZ2c2DKgehtfgi4RZv",
 )
 
 
@@ -57,7 +57,7 @@ for attr in [
     setattr(vector_db_mod, attr, MagicMock())
 
 apps_mod = sys.modules["database.apps"]
-for attr in ["record_app_usage", "get_omi_personas_by_uid_db", "get_app_by_id_db"]:
+for attr in ["record_app_usage", "get_aura_personas_by_uid_db", "get_app_by_id_db"]:
     setattr(apps_mod, attr, MagicMock())
 
 llm_usage_mod = sys.modules["database.llm_usage"]

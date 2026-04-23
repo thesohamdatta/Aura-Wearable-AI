@@ -18,8 +18,8 @@ from .action_item_tools import (
     create_action_item_tool,
     update_action_item_tool,
 )
-from .omi_tools import (
-    get_omi_product_info_tool,
+from .aura_tools import (
+    get_aura_product_info_tool,
 )
 from .perplexity_tools import (
     perplexity_web_search_tool,
@@ -58,7 +58,7 @@ __all__ = [
     'get_action_items_tool',
     'create_action_item_tool',
     'update_action_item_tool',
-    'get_omi_product_info_tool',
+    'get_aura_product_info_tool',
     'perplexity_web_search_tool',
     'get_calendar_events_tool',
     'create_calendar_event_tool',

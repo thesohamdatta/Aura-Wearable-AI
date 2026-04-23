@@ -47,7 +47,7 @@ bool lightSleepEnabled = true;
 #define SERIAL_NUMBER_STRING_CHAR_UUID (uint16_t) 0x2A25
 
 // Main Friend Service - using config.h UUIDs
-static BLEUUID serviceUUID(OMI_SERVICE_UUID);
+static BLEUUID serviceUUID(AURA_SERVICE_UUID);
 static BLEUUID photoDataUUID(PHOTO_DATA_UUID);
 static BLEUUID photoControlUUID(PHOTO_CONTROL_UUID);
 static BLEUUID audioDataUUID(AUDIO_DATA_UUID);

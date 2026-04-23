@@ -42,7 +42,7 @@ async def oauth_authorize(
     permissions = []
     if app.capabilities:
         if "chat" in app.capabilities:
-            permissions.append({"icon": "💬", "text": "Engage in chat conversations with Omi."})
+            permissions.append({"icon": "💬", "text": "Engage in chat conversations with Aura."})
         if "memories" in app.capabilities:
             permissions.append({"icon": "📝", "text": "Access and manage your conversations."})
 
@@ -82,7 +82,7 @@ async def oauth_authorize(
                 permissions.append({"icon": "🗣️", "text": "Access your chat history for notifications."})
 
     if not permissions:
-        permissions.append({"icon": "✅", "text": "Access your basic Omi profile information."})
+        permissions.append({"icon": "✅", "text": "Access your basic Aura profile information."})
 
     # Remove duplicate permissions (based on text)
     unique_permissions = []

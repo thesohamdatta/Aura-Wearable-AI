@@ -74,8 +74,8 @@ def render_oauth_response(
             'title': f"{config['name']} Auth",
             'icon': '✓',
             'message': 'Authentication Successful!',
-            'description': 'Redirecting back to Omi...',
-            'redirect_url': redirect_url or f'omi://{app_key}/callback?error=unknown',
+            'description': 'Redirecting back to Aura...',
+            'redirect_url': redirect_url or f'aura://{app_key}/callback?error=unknown',
             'show_spinner': True,
         }
     else:
@@ -92,7 +92,7 @@ def render_oauth_response(
             'icon': '❌',
             'message': f"{'Security' if error_type == 'invalid_state' else 'Configuration' if error_type == 'config_error' else 'Authentication'} Error",
             'description': error_messages.get(error_type, 'An error occurred.'),
-            'redirect_url': f'omi://{app_key}/callback?error={error_type or "unknown"}',
+            'redirect_url': f'aura://{app_key}/callback?error={error_type or "unknown"}',
             'show_spinner': False,
         }
 
@@ -983,7 +983,7 @@ async def handle_oauth_callback(
 
             if not access_token:
                 print(f'{app_key}: No access token received in response')
-                deep_link = f'omi://{app_key}/callback?error=no_access_token'
+                deep_link = f'aura://{app_key}/callback?error=no_access_token'
                 return render_oauth_response(request, app_key, success=True, redirect_url=deep_link)
 
             integration_data = {
@@ -1011,21 +1011,21 @@ async def handle_oauth_callback(
                 print(f'{app_key}: Successfully stored tokens for user {uid}')
             except Exception as e:
                 print(f'{app_key}: Error storing tokens in Firebase: {e}')
-                deep_link = f'omi://{app_key}/callback?error=storage_failed'
+                deep_link = f'aura://{app_key}/callback?error=storage_failed'
                 return render_oauth_response(request, app_key, success=True, redirect_url=deep_link)
 
             requires_setup = 'requires_setup=true' if app_key in ['asana', 'clickup'] else ''
-            deep_link = f'omi://{app_key}/callback?success=true{"&" + requires_setup if requires_setup else ""}'
+            deep_link = f'aura://{app_key}/callback?success=true{"&" + requires_setup if requires_setup else ""}'
 
             return render_oauth_response(request, app_key, success=True, redirect_url=deep_link)
         else:
             print(f'{app_key}: Token exchange failed with HTTP {token_response.status_code}')
-            deep_link = f'omi://{app_key}/callback?error=token_exchange_failed'
+            deep_link = f'aura://{app_key}/callback?error=token_exchange_failed'
             return render_oauth_response(request, app_key, success=True, redirect_url=deep_link)
 
     except Exception as e:
         print(f'{app_key}: Unexpected error during OAuth callback: {e}')
-        deep_link = f'omi://{app_key}/callback?error=server_error'
+        deep_link = f'aura://{app_key}/callback?error=server_error'
         return render_oauth_response(request, app_key, success=True, redirect_url=deep_link)
 
 

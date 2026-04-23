@@ -1,11 +1,11 @@
 ---
 title: "Backend Setup"
-description: "Set up the Omi backend infrastructure for local development. This guide covers Google Cloud, Firebase, OAuth, and all required services."
+description: "Set up the Aura backend infrastructure for local development. This guide covers Google Cloud, Firebase, OAuth, and all required services."
 ---
 
 ## Overview
 
-The Omi backend powers all AI capabilities including transcription, conversation processing, chat, and integrations. This guide will help you set up a local development environment.
+The Aura backend powers all AI capabilities including transcription, conversation processing, chat, and integrations. This guide will help you set up a local development environment.
 
 ```mermaid
 flowchart LR
@@ -26,7 +26,7 @@ flowchart LR
         Push[Pusher Service]
     end
 
-    subgraph App["Omi App"]
+    subgraph App["Aura App"]
         Flutter[Flutter Client]
     end
 
@@ -41,7 +41,7 @@ flowchart LR
 ```
 
 <Info>
-If you just want to build apps or test features, you can use Omi's development backend instead. See the [App Setup Guide](/doc/developer/AppSetup) for the automatic setup option.
+If you just want to build apps or test features, you can use Aura's development backend instead. See the [App Setup Guide](/doc/developer/AppSetup) for the automatic setup option.
 </Info>
 
 ---
@@ -52,7 +52,7 @@ If you just want to build apps or test features, you can use Omi's development b
   width="560"
   height="315"
   src="https://www.youtube.com/embed/JyXQM0B0Gnc?si=_2W2GU5Qr7dn7gC7"
-  title="Omi Backend Setup Video Guide"
+  title="Aura Backend Setup Video Guide"
   frameBorder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowFullScreen
@@ -162,7 +162,7 @@ OAuth is required for user authentication. You need to configure both Google and
         1. Go to [Google Cloud Console → Credentials](https://console.cloud.google.com/apis/credentials)
         2. Click **Create Credentials** → **OAuth 2.0 Client ID**
         3. Select **Web application** as the application type
-        4. Set a name (e.g., "Omi Backend Auth")
+        4. Set a name (e.g., "Aura Backend Auth")
       </Step>
       <Step title="Configure Authorized Origins">
         Under **Authorized JavaScript origins**, add:
@@ -236,8 +236,8 @@ OAuth is required for user authentication. You need to configure both Google and
 <Steps>
   <Step title="Clone the Repository" icon="code-branch">
     ```bash
-    git clone https://github.com/BasedHardware/Omi.git
-    cd Omi/backend
+    git clone https://github.com/BasedHardware/Aura.git
+    cd Aura/backend
     ```
   </Step>
   <Step title="Install System Dependencies" icon="box">
@@ -346,7 +346,7 @@ OAuth is required for user authentication. You need to configure both Google and
 
 <Steps>
   <Step title="Set Up Ngrok Tunnel" icon="tunnel">
-    Ngrok exposes your local backend to the internet so the Omi app can connect.
+    Ngrok exposes your local backend to the internet so the Aura app can connect.
 
     1. Sign up at [ngrok.com](https://ngrok.com/) and install Ngrok
     2. Authenticate with your account
@@ -370,8 +370,8 @@ OAuth is required for user authentication. You need to configure both Google and
     | `--host 0.0.0.0` | Listen on all interfaces (optional) |
     | `--port 8000` | Port to listen on |
   </Step>
-  <Step title="Connect the Omi App" icon="link">
-    In your Omi app's `.dev.env` file, set:
+  <Step title="Connect the Aura App" icon="link">
+    In your Aura app's `.dev.env` file, set:
 
     ```
     API_BASE_URL=https://your-domain.ngrok-free.app/
@@ -414,7 +414,7 @@ OAuth is required for user authentication. You need to configure both Google and
   </Accordion>
   <Accordion title="Ngrok connection issues" icon="globe">
     - Ensure your Ngrok tunnel is running
-    - Verify the URL is correctly set in the Omi app
+    - Verify the URL is correctly set in the Aura app
     - Check that OAuth redirect URIs match your Ngrok URL
   </Accordion>
   <Accordion title="Module not found errors" icon="box-open">
@@ -526,10 +526,10 @@ ln -s -f ../../scripts/pre-commit .git/hooks/pre-commit
 ## Need Help?
 
 <CardGroup cols={2}>
-  <Card title="GitHub Issues" icon="github" href="https://github.com/BasedHardware/omi/issues">
+  <Card title="GitHub Issues" icon="github" href="https://github.com/BasedHardware/aura/issues">
     Report bugs or request features
   </Card>
-  <Card title="Discord Community" icon="discord" href="http://discord.omi.me">
+  <Card title="Discord Community" icon="discord" href="http://discord.aura.me">
     Get help from the community
   </Card>
 </CardGroup>

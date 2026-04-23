@@ -74,7 +74,7 @@ def _get_goal_context(uid: str, goal_title: str) -> Dict[str, str]:
         if recent_messages:
             chat_lines = []
             for msg in reversed(recent_messages):  # Chronological order
-                sender = "User" if msg.get('sender') == 'human' else "Omi"
+                sender = "User" if msg.get('sender') == 'human' else "Aura"
                 text = msg.get('text', '')[:200]
                 if text:
                     chat_lines.append(f"{sender}: {text}")

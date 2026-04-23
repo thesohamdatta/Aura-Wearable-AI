@@ -126,7 +126,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:host="h.omi.me"
+                    android:host="h.aura.me"
                     android:scheme="https"
                     android:pathPattern="/apps/.*" />
             </intent-filter>
@@ -135,7 +135,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:host="try.omi.me"
+                    android:host="try.aura.me"
                     android:scheme="https"
                     android:pathPattern="/apps/.*" />
             </intent-filter>
@@ -144,7 +144,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:host="h.omi.me"
+                    android:host="h.aura.me"
                     android:scheme="https"
                     android:path="/unlimited" />
             </intent-filter>
@@ -152,7 +152,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="omi" />
+                <data android:scheme="aura" />
             </intent-filter>
         </activity>
 

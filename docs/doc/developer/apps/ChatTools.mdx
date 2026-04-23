@@ -1,11 +1,11 @@
 ---
 title: "Chat Tools"
-description: "Add custom chat tools to your Omi app that extend Omi's capabilities in user conversations."
+description: "Add custom chat tools to your Aura app that extend Aura's capabilities in user conversations."
 ---
 
 ## Overview
 
-**Chat Tools** allow your app to provide custom functions that become available in Omi chat when users install your app. These tools enable the AI assistant to interact with your service directly through natural language conversations.
+**Chat Tools** allow your app to provide custom functions that become available in Aura chat when users install your app. These tools enable the AI assistant to interact with your service directly through natural language conversations.
 
 <CardGroup cols={3}>
   <Card title="Custom Actions" icon="wand-magic-sparkles">
@@ -24,7 +24,7 @@ description: "Add custom chat tools to your Omi app that extend Omi's capabiliti
 - List available channels
 - Search messages in Slack
 
-When a user installs your app, these tools automatically become available in their Omi chat, allowing them to say things like "Send a message to #general saying hello" or "What Slack channels do I have?"
+When a user installs your app, these tools automatically become available in their Aura chat, allowing them to say things like "Send a message to #general saying hello" or "What Slack channels do I have?"
 
 <Info>
 Chat Tools require your app to have the `external_integration` capability enabled. They are not a separate capability, but rather a feature that works with external integration apps.
@@ -37,7 +37,7 @@ Chat Tools require your app to have the `external_integration` capability enable
 ```mermaid
 sequenceDiagram
     participant U as User
-    participant O as Omi AI
+    participant O as Aura AI
     participant Y as Your Server
 
     U->>O: "Send hello to #general"
@@ -50,20 +50,20 @@ sequenceDiagram
 ```
 
 <Steps>
-  <Step title="User Chats with Omi">
+  <Step title="User Chats with Aura">
     User makes a request in natural language
   </Step>
   <Step title="AI Decides to Use Tool">
-    Omi's AI determines your tool is the best way to fulfill the request
+    Aura's AI determines your tool is the best way to fulfill the request
   </Step>
-  <Step title="Omi Calls Your Endpoint">
+  <Step title="Aura Calls Your Endpoint">
     POST request with `uid`, `app_id`, `tool_name`, plus extracted parameters
   </Step>
   <Step title="Your Server Processes">
     Execute the action and return a result
   </Step>
   <Step title="User Sees Result">
-    Omi displays your response to the user
+    Aura displays your response to the user
   </Step>
 </Steps>
 
@@ -73,7 +73,7 @@ sequenceDiagram
 
 ### Step 1: Create Tool Endpoints
 
-Your backend server needs to expose endpoints that Omi will call when tools are invoked.
+Your backend server needs to expose endpoints that Aura will call when tools are invoked.
 
 <AccordionGroup>
   <Accordion title="Endpoint Requirements" icon="list-check">
@@ -110,7 +110,7 @@ def send_message():
         "app_id": "slack_app_id",
         "tool_name": "send_slack_message",
         "channel": "#general",
-        "message": "Hello from Omi!"
+        "message": "Hello from Aura!"
     }
     """
     data = request.json
@@ -278,9 +278,9 @@ return jsonify({'error': 'Channel not found. Please check the channel name.'}), 
 
 ---
 
-## Part 2: Adding Chat Tools in Omi App Store
+## Part 2: Adding Chat Tools in Aura App Store
 
-Chat tools are defined via a **manifest endpoint** hosted on your server. When you create or update your app in the Omi App Store, Omi will automatically fetch the tool definitions from your manifest URL.
+Chat tools are defined via a **manifest endpoint** hosted on your server. When you create or update your app in the Aura App Store, Aura will automatically fetch the tool definitions from your manifest URL.
 
 <CardGroup cols={2}>
   <Card title="Single Source of Truth" icon="database">
@@ -299,7 +299,7 @@ Chat tools are defined via a **manifest endpoint** hosted on your server. When y
 
 ### Step 1: Create the Manifest File
 
-Create a JSON file at `/.well-known/omi-tools.json` on your server:
+Create a JSON file at `/.well-known/aura-tools.json` on your server:
 
 ```json
 {
@@ -354,14 +354,14 @@ Create a JSON file at `/.well-known/omi-tools.json` on your server:
 
 Make sure your manifest is accessible via HTTPS. Common locations:
 
-- `https://your-app.com/.well-known/omi-tools.json` (recommended)
-- `https://your-app.com/omi/manifest.json`
+- `https://your-app.com/.well-known/aura-tools.json` (recommended)
+- `https://your-app.com/aura/manifest.json`
 - `https://your-app.com/api/tools-manifest`
 
-### Step 3: Add Manifest URL in Omi App Store
+### Step 3: Add Manifest URL in Aura App Store
 
 <Steps>
-  <Step title="Open Omi App">
+  <Step title="Open Aura App">
     Navigate to Apps → Create App (or edit an existing app)
   </Step>
   <Step title="Select Capability">
@@ -370,16 +370,16 @@ Make sure your manifest is accessible via HTTPS. Common locations:
   <Step title="Enter Manifest URL">
     In the **Chat Tools Manifest URL** field, enter:
     ```
-    https://your-app.com/.well-known/omi-tools.json
+    https://your-app.com/.well-known/aura-tools.json
     ```
   </Step>
   <Step title="Submit">
-    Omi will automatically fetch your tool definitions
+    Aura will automatically fetch your tool definitions
   </Step>
 </Steps>
 
 <Note>
-**Endpoint URLs in Manifest**: You can use relative paths (e.g., `/api/send_message`) in your manifest. Omi will automatically resolve them using your `App Home URL` as the base URL.
+**Endpoint URLs in Manifest**: You can use relative paths (e.g., `/api/send_message`) in your manifest. Aura will automatically resolve them using your `App Home URL` as the base URL.
 </Note>
 
 ---
@@ -419,8 +419,8 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/.well-known/omi-tools.json")
-async def get_omi_tools_manifest():
+@app.get("/.well-known/aura-tools.json")
+async def get_aura_tools_manifest():
     return {
         "tools": [
             {
@@ -503,7 +503,7 @@ async def get_omi_tools_manifest():
     - "Sending message..."
     - "Creating calendar event..."
 
-    If not provided, Omi generates a default based on the tool name.
+    If not provided, Aura generates a default based on the tool name.
   </Accordion>
 </AccordionGroup>
 
@@ -520,7 +520,7 @@ async def get_omi_tools_manifest():
   "app_id": "your_app_id",
   "tool_name": "send_slack_message",
   "channel": "#general",
-  "message": "Hello from Omi!"
+  "message": "Hello from Aura!"
 }
 ```
 
@@ -634,7 +634,7 @@ def send_message():
     ```
   </Step>
   <Step title="Create the App">
-    Add your tool definitions in the Omi App Store
+    Add your tool definitions in the Aura App Store
   </Step>
   <Step title="Install the App">
     Install it in your test account
@@ -690,7 +690,7 @@ def send_message():
 
 <CardGroup cols={2}>
   <Card title="Developer API" icon="code" href="/doc/developer/api">
-    Access your own personal Omi data programmatically
+    Access your own personal Aura data programmatically
   </Card>
   <Card title="Data Import APIs" icon="file-import" href="/doc/developer/apps/Import">
     Create conversations and memories via REST API
