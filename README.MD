@@ -124,7 +124,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 <table>
 <tr>
 <td align="center" width="50%">
-<img src="Assest/MAIN/hw-front.png" width="100%"/>
+<img src="Assest/MAIN/hero iamge.png" width="100%"/>
 <br/><sub>AURA — Front Face</sub>
 </td>
 <td align="center" width="50%">
@@ -205,12 +205,31 @@ PDM Mic  ── [Built-in]      ──────── ESP32-S3 PDM pins (GPIO
 <table>
 <tr>
 <td align="center" width="50%">
-<img src="Assest/3D PARTS/INSIDE VIEW/EXPLODED VIEW 2.png" width="100%"/>
+<img src="Assest/3D PARTS/INSIDE VIEW/EXPLODED VIEW.png" width="100%"/>
 <br/><sub>Exploded — component fit &amp; assembly order</sub>
 </td>
 <td align="center" width="50%">
 <img src="Assest/3D PARTS/INSIDE VIEW/TOP VIEW.png" width="100%"/>
 <br/><sub>Top view — full assembly layout</sub>
+</td>
+</tr>
+</table>
+
+<br/>
+
+<table>
+<tr>
+<td align="center" width="33%">
+<img src="Assest/3D PARTS/base chipset of esp32 s3 sence .png" width="100%"/>
+<br/><sub>ESP32-S3 Base Board</sub>
+</td>
+<td align="center" width="33%">
+<img src="Assest/3D PARTS/memory card and camera extension.png" width="100%"/>
+<br/><sub>Expansion Board</sub>
+</td>
+<td align="center" width="33%">
+<img src="Assest/3D PARTS/camera module.png" width="100%"/>
+<br/><sub>Camera Module</sub>
 </td>
 </tr>
 </table>
