@@ -23,15 +23,15 @@
 
 <br/>
 
+<div align="center">
+
 AURA is a pendant you wear around your neck. It continuously captures audio and images, streams them to your phone, and AI turns everything into searchable memories, summaries, and action items — automatically.
 
-**What it is:**
-- A wearable AI context engine
-- Open hardware + open firmware + open app
-- Built to last all day (~10 hours battery)
-- Under 50g
+**What it is:** A wearable AI context engine · Open hardware + firmware + app · ~10 hours battery · Under 50g
 
 **Built for:** developers, researchers, and builders who want to extend it.
+
+</div>
 
 <br/>
 
