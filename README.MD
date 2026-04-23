@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Assest/MAIN/waaring aura.jpeg" alt="AURA — worn as a pendant" width="72%"/>
+<img src="Assest/MAIN/hero iamge.png" alt="AURA pendant" width="60%"/>
 
 <br/>
 
@@ -43,7 +43,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 <div align="center">
 
-<img src="Assest/MAIN/the  diagram .png" alt="System architecture diagram" width="80%"/>
+<img src="Assest/MAIN/the  diagram .png" alt="System architecture diagram" width="92%"/>
 
 </div>
 
@@ -65,7 +65,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
      │  Pinecone  →  memory      │
      └───────────────────────────┘
          │
-   Memories · Summaries · Actions  ← what you get
+   Memories · Summaries · Actions   ← what you get
 ```
 
 <br/>
@@ -124,12 +124,22 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 <table>
 <tr>
 <td align="center" width="50%">
-<img src="Assest/MAIN/on table .jpeg" width="100%"/>
-<br/><sub>Assembled device — front &amp; back</sub>
+<img src="Assest/MAIN/hw-front.png" width="100%"/>
+<br/><sub>AURA — Front Face</sub>
 </td>
 <td align="center" width="50%">
-<img src="Assest/MAIN/main moduel.webp" width="100%"/>
-<br/><sub>XIAO ESP32-S3 Sense + OV2640 camera</sub>
+<img src="Assest/MAIN/hw-wearing.jpg" width="100%"/>
+<br/><sub>AURA — Worn as a pendant</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<img src="Assest/MAIN/hw-two-a.jpg" width="100%"/>
+<br/><sub>AURA — Device views</sub>
+</td>
+<td align="center" width="50%">
+<img src="Assest/MAIN/hw-two-b.jpg" width="100%"/>
+<br/><sub>AURA — Back and side profiles</sub>
 </td>
 </tr>
 </table>
