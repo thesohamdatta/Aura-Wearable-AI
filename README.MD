@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Assest/MAIN/hero iamge.png" alt="AURA pendant" width="60%"/>
+<img src="Assest/MAIN/hero iamge.png" alt="AURA — AI wearable pendant" width="60%"/>
 
 <br/>
 
@@ -14,6 +14,7 @@
 [![MCU](https://img.shields.io/badge/MCU-ESP32--S3%20Sense-E7473C?style=flat-square)](https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)
 [![App](https://img.shields.io/badge/App-Android-02569B?style=flat-square)](app/android)
 [![Cost](https://img.shields.io/badge/Build%20Cost-~%2460%20USD-2EA043?style=flat-square)](#bill-of-materials)
+[![Stars](https://img.shields.io/github/stars/thesohamdatta/Aura-Wearable-AI?style=flat-square&color=FFD700)](https://github.com/thesohamdatta/Aura-Wearable-AI/stargazers)
 
 </div>
 
@@ -39,11 +40,37 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 <br/>
 
+## Table of Contents
+
+- [How it works](#how-it-works)
+- [Mobile App](#mobile-app)
+- [Bill of Materials](#bill-of-materials)
+- [Hardware](#hardware)
+- [Circuit](#circuit)
+- [3D Enclosure](#3d-enclosure)
+- [Build Guide](#build-guide)
+  - [1 — Firmware](#1--firmware)
+  - [2 — Mobile App](#2--mobile-app)
+  - [3 — Backend](#3--backend)
+  - [4 — Local / Private Mode](#4--local--private-mode)
+- [AI Provider Reference](#ai-provider-reference)
+- [Build Checklist](#build-checklist)
+- [Troubleshooting](#troubleshooting)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+
+<br/>
+
+---
+
+<br/>
+
 ## How it works
 
 <div align="center">
 
-<img src="Assest/MAIN/diagram.jpg" alt="System architecture diagram" width="92%"/>
+<img src="Assest/MAIN/diagram.jpg" alt="AURA system architecture diagram" width="92%"/>
 
 </div>
 
@@ -74,7 +101,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 <br/>
 
-## App
+## Mobile App
 
 <div align="center">
 
@@ -95,7 +122,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 **Total: ~$60 USD**
 
 <div align="center">
-<img src="Assest/CIRCUIT DIAGRAM/ALL COMPONENTS.png" alt="All components" width="72%"/>
+<img src="Assest/CIRCUIT DIAGRAM/ALL COMPONENTS.png" alt="All components laid out" width="72%"/>
 </div>
 
 <br/>
@@ -125,7 +152,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 <tr>
 <td align="center" width="50%">
 <img src="Assest/MAIN/hero iamge.png" width="100%"/>
-<br/><sub>AURA — Front Face</sub>
+<br/><sub>AURA — Front face</sub>
 </td>
 <td align="center" width="50%">
 <img src="Assest/MAIN/hw-wearing.jpg" width="100%"/>
@@ -183,6 +210,25 @@ SS12D00-G3 slider switch inline with battery ground wire.
 
 ## Circuit
 
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="Assest/CIRCUIT DIAGRAM/FRONT.png" width="100%"/>
+<br/><sub>Circuit — front view</sub>
+</td>
+<td align="center" width="50%">
+<img src="Assest/CIRCUIT DIAGRAM/BACK.png" width="100%"/>
+<br/><sub>Circuit — back view</sub>
+</td>
+</tr>
+</table>
+
+</div>
+
+<br/>
+
 ```
 LiPo (+) ─────────────────────────── ESP32-S3 BAT+
 LiPo (-) ── [Slider Switch] ──────── ESP32-S3 BAT-
@@ -190,7 +236,7 @@ OV2640   ── [Ribbon cable]  ──────── ESP32-S3 Camera connect
 PDM Mic  ── [Built-in]      ──────── ESP32-S3 PDM pins (GPIO41/42)
 ```
 
-> **Safety:** Never short LiPo cells. Charge at ≤500mA (1C). Store in fireproof bag. Swollen battery = dispose immediately.
+> **Safety:** Never short LiPo cells. Charge at ≤500mA (1C). Store in a fireproof bag. Swollen battery = dispose immediately.
 
 <br/>
 
@@ -242,7 +288,7 @@ PDM Mic  ── [Built-in]      ──────── ESP32-S3 PDM pins (GPIO
 
 | Setting | Value |
 |:---|:---|
-| File | `Assest/3D PARTS/INSIDE VIEW/CASE.stl` |
+| File | `hardware/CASE.stl` |
 | Material | PLA or PETG |
 | Layer height | 0.15–0.20mm |
 | Infill | 20% |
@@ -296,7 +342,7 @@ cd Aura-Wearable-AI/firmware
 **Key config values in `firmware/src/config.h`:**
 
 ```cpp
-#define BLE_DEVICE_NAME        "AURA"
+#define BLE_DEVICE_NAME            "AURA"
 #define PHOTO_CAPTURE_INTERVAL_MS  30000   // image every 30s
 #define MIC_SAMPLE_RATE            16000   // 16kHz audio
 #define CAMERA_FRAME_SIZE          FRAMESIZE_VGA
@@ -307,7 +353,7 @@ cd Aura-Wearable-AI/firmware
 ```
 1. Hold BOOT → press RESET → release BOOT
 2. Device appears as USB drive "ESP32S3"
-3. Copy firmware/releases/*.uf2 to the drive
+3. Copy firmware/releases/aura_glass_firmware.uf2 to the drive
 4. Device reboots automatically
 5. Open Serial Monitor @ 115200 baud
 ```
@@ -381,7 +427,7 @@ copy .env.template .env
 uvicorn main:app --reload --env-file .env --port 8000
 ```
 
-**Expose to internet (required for device connection):**
+**Expose to the internet (required for device connection):**
 
 ```bash
 # Install ngrok → https://ngrok.com
@@ -444,7 +490,7 @@ Recommended stack: **Deepgram + GPT-4o Vision**
 ```
 HARDWARE
 [ ] Components ordered
-[ ] Case printed (Assest/3D PARTS/INSIDE VIEW/CASE.stl)
+[ ] Case printed (hardware/CASE.stl)
 [ ] Battery wired — polarity verified with multimeter
 [ ] Switch inline with battery ground
 [ ] Assembled in case
@@ -568,7 +614,7 @@ Aura-Wearable-AI/
 │   │   ├── opus_encoder.cpp     ← audio compression
 │   │   ├── ota.cpp              ← OTA firmware updates
 │   │   └── config.h             ← all settings here
-│   ├── releases/                ← pre-built UF2 binaries
+│   ├── releases/                ← pre-built UF2 binary
 │   └── readme.md
 │
 ├── app/
@@ -584,14 +630,16 @@ Aura-Wearable-AI/
 │   ├── .env.template            ← copy → .env
 │   └── README.md
 │
+├── hardware/
+│   └── CASE.stl                 ← 3D printable case
+│
 ├── Assest/
 │   ├── MAIN/                    ← hero images, app mockups
-│   ├── 3D PARTS/                ← STL files, exploded views
-│   │   └── INSIDE VIEW/         ← CASE.stl + renders
+│   ├── 3D PARTS/                ← STL renders, exploded views
+│   │   └── INSIDE VIEW/         ← CASE.stl + assembly renders
 │   └── CIRCUIT DIAGRAM/         ← wiring diagrams, photos
 │
-└── hardware/
-    └── CASE.stl                 ← 3D case file (copy)
+└── docs/                        ← developer documentation
 ```
 
 <br/>
@@ -610,13 +658,15 @@ git commit -m "feat: short description of what and why"
 ```
 
 Good contributions:
-- Hardware: new case designs, better battery layout
-- Firmware: power optimization, new sensors, compression
-- App: new views, integrations, offline support
-- AI: better prompts, model support, edge inference
-- Docs: corrections, clarity, translations
+- **Hardware:** new case designs, better battery layout
+- **Firmware:** power optimization, new sensors, compression
+- **App:** new views, integrations, offline support
+- **AI:** better prompts, model support, edge inference
+- **Docs:** corrections, clarity, translations
 
 Include photos or video for hardware changes. Keep PRs focused.
+
+[Open an issue](https://github.com/thesohamdatta/Aura-Wearable-AI/issues) · [Browse open PRs](https://github.com/thesohamdatta/Aura-Wearable-AI/pulls)
 
 <br/>
 
@@ -641,10 +691,10 @@ Built on the ESP32-S3 Sense. Designed to be extended.
 
 <br/>
 
-[GitHub Issues](https://github.com/thesohamdatta/Aura-Wearable-AI/issues) · [Pull Requests](https://github.com/thesohamdatta/Aura-Wearable-AI/pulls)
+[⭐ Star this repo](https://github.com/thesohamdatta/Aura-Wearable-AI) · [GitHub Issues](https://github.com/thesohamdatta/Aura-Wearable-AI/issues) · [Pull Requests](https://github.com/thesohamdatta/Aura-Wearable-AI/pulls)
 
 <br/>
 
-<img src="Assest/MAIN/the neckless.png" alt="AURA pendant" width="90px"/>
+<img src="Assest/MAIN/the neckless.png" alt="AURA pendant necklace" width="90px"/>
 
 </div>
