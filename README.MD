@@ -48,7 +48,6 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 - [Hardware](#hardware)
   - [Specs](#xiao-esp32-s3-sense-specs)
   - [Battery System](#battery-system)
-- [Circuit](#circuit)
 - [3D Enclosure](#3d-enclosure)
 - [Build Guide](#build-guide)
   - [1 — Firmware](#1--firmware)
@@ -203,42 +202,6 @@ Deep sleep                                ~2mA
 ```
 
 SS12D00-G3 slider switch inline with battery ground wire.
-
-<br/>
-
----
-
-<br/>
-
-## Circuit
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center" width="50%">
-<img src="Assest/CIRCUIT DIAGRAM/FRONT.png" width="100%"/>
-<br/><sub>Circuit — front view</sub>
-</td>
-<td align="center" width="50%">
-<img src="Assest/CIRCUIT DIAGRAM/BACK.png" width="100%"/>
-<br/><sub>Circuit — back view</sub>
-</td>
-</tr>
-</table>
-
-</div>
-
-<br/>
-
-```
-LiPo (+) ─────────────────────────── ESP32-S3 BAT+
-LiPo (-) ── [Slider Switch] ──────── ESP32-S3 BAT-
-OV2640   ── [Ribbon cable]  ──────── ESP32-S3 Camera connector
-PDM Mic  ── [Built-in]      ──────── ESP32-S3 PDM pins (GPIO41/42)
-```
-
-> **Safety:** Never short LiPo cells. Charge at ≤500mA (1C). Store in a fireproof bag. Swollen battery = dispose immediately.
 
 <br/>
 
@@ -639,7 +602,7 @@ Aura-Wearable-AI/
 │   ├── MAIN/                    ← hero images, app mockups
 │   ├── 3D PARTS/                ← STL renders, exploded views
 │   │   └── INSIDE VIEW/         ← CASE.stl + assembly renders
-│   └── CIRCUIT DIAGRAM/         ← wiring diagrams, photos
+│   └── CIRCUIT DIAGRAM/         ← component photos
 │
 └── docs/                        ← developer documentation
 ```
