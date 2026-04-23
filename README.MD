@@ -78,22 +78,22 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 <br/>
 
 ```
-  Microphone + Camera
-         │
-    ESP32-S3 Sense                 ← captures audio & images
-         │
-      BLE / WiFi
-         │
-      Phone App                    ← pairs, streams, displays
-         │
-      Backend API
-     ┌───┴───────────────────────┐
-     │  Deepgram  →  transcript  │
-     │  GPT-4o    →  vision      │  ← all processed here
-     │  Pinecone  →  memory      │
-     └───────────────────────────┘
-         │
-   Memories · Summaries · Actions   ← what you get
+        Microphone + Camera
+               │
+         ESP32-S3 Sense          ←  captures audio & images
+               │
+           BLE / WiFi
+               │
+           Phone App              ←  pairs, streams, displays
+               │
+           Backend API
+       ┌───────┴───────────────────────┐
+       │   Deepgram  →  transcript     │
+       │   GPT-4o    →  vision         │  ←  all processed here
+       │   Pinecone  →  memory         │
+       └───────────────────────────────┘
+               │
+   Memories · Summaries · Actions      ←  what you get
 ```
 
 <br/>
