@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Assest/MAIN/hero.png" alt="AURA" width="100%"/>
+<img src="Assest/MAIN/waaring aura.jpeg" alt="AURA — worn as a pendant" width="72%"/>
 
 <br/>
 
@@ -23,10 +23,6 @@
 
 <br/>
 
-<table>
-<tr>
-<td width="52%" valign="top">
-
 AURA is a pendant you wear around your neck. It continuously captures audio and images, streams them to your phone, and AI turns everything into searchable memories, summaries, and action items — automatically.
 
 **What it is:**
@@ -36,34 +32,6 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 - Under 50g
 
 **Built for:** developers, researchers, and builders who want to extend it.
-
-</td>
-<td width="48%" align="center" valign="top">
-
-<img src="Assest/MAIN/waaring aura.jpeg" alt="AURA being worn" width="95%"/>
-
-</td>
-</tr>
-</table>
-
-<br/>
-
----
-
-<br/>
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center" width="25%"><img src="Assest/MAIN/on table .jpeg" width="100%"/><br/><sub>Hardware</sub></td>
-<td align="center" width="25%"><img src="Assest/MAIN/on table 2.jpeg" width="100%"/><br/><sub>Rear view</sub></td>
-<td align="center" width="25%"><img src="Assest/MAIN/main moduel.webp" width="100%"/><br/><sub>Module</sub></td>
-<td align="center" width="25%"><img src="Assest/MAIN/the eye short.jpeg" width="100%"/><br/><sub>Camera</sub></td>
-</tr>
-</table>
-
-</div>
 
 <br/>
 
@@ -75,7 +43,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 <div align="center">
 
-<img src="Assest/MAIN/the  diagram .png" alt="System diagram" width="72%"/>
+<img src="Assest/MAIN/the  diagram .png" alt="System architecture diagram" width="80%"/>
 
 </div>
 
@@ -102,12 +70,6 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 <br/>
 
-<div align="center">
-<img src="Assest/MAIN/the software stack.png" alt="Software stack" width="68%"/>
-</div>
-
-<br/>
-
 ---
 
 <br/>
@@ -116,22 +78,9 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 <div align="center">
 
-<img src="Assest/MAIN/Hero APP mocuk of applicaiotn .png" alt="App hero mockup" width="80%"/>
+<img src="Assest/MAIN/Applicaiton UI Mock up.png" alt="AURA Android app — all screens" width="88%"/>
 
-<br/><br/>
-
-<table>
-<tr>
-<td align="center" width="50%">
-<img src="Assest/MAIN/Applicaiton UI Mock up.png" width="92%"/>
-<br/><sub>Memories + chat</sub>
-</td>
-<td align="center" width="50%">
-<img src="Assest/MAIN/hero mockup of the applicatoin .webp" width="92%"/>
-<br/><sub>Mobile interface</sub>
-</td>
-</tr>
-</table>
+<br/><sub>Conversations · Memories · Tasks · Search</sub>
 
 </div>
 
@@ -146,7 +95,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 **Total: ~$60 USD**
 
 <div align="center">
-<img src="Assest/CIRCUIT DIAGRAM/ALL COMPONENTS.png" alt="Components" width="70%"/>
+<img src="Assest/CIRCUIT DIAGRAM/ALL COMPONENTS.png" alt="All components" width="72%"/>
 </div>
 
 <br/>
@@ -174,17 +123,13 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 <table>
 <tr>
-<td align="center" width="33%">
-<img src="Assest/CIRCUIT DIAGRAM/FRONT.png" width="100%"/>
-<br/><sub>Front</sub>
+<td align="center" width="50%">
+<img src="Assest/MAIN/on table .jpeg" width="100%"/>
+<br/><sub>Assembled device — front &amp; back</sub>
 </td>
-<td align="center" width="33%">
-<img src="Assest/CIRCUIT DIAGRAM/BACK.png" width="100%"/>
-<br/><sub>Back</sub>
-</td>
-<td align="center" width="33%">
-<img src="Assest/CIRCUIT DIAGRAM/CAM.png" width="100%"/>
-<br/><sub>Camera module</sub>
+<td align="center" width="50%">
+<img src="Assest/MAIN/main moduel.webp" width="100%"/>
+<br/><sub>XIAO ESP32-S3 Sense + OV2640 camera</sub>
 </td>
 </tr>
 </table>
@@ -208,12 +153,6 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 **Battery system:**
 
-<div align="center">
-<img src="Assest/MAIN/battery.png" alt="Battery" width="35%"/>
-</div>
-
-<br/>
-
 2× 250mAh in parallel = **500mAh total**
 
 ```
@@ -224,12 +163,6 @@ Deep sleep                                ~2mA
 500mAh ÷ ~80mA average  ≈  8–10 hours
 ```
 
-**Switch:**
-
-<div align="center">
-<img src="Assest/CIRCUIT DIAGRAM/SWITCH.png" alt="Slider switch" width="22%"/>
-</div>
-
 SS12D00-G3 slider switch inline with battery ground wire.
 
 <br/>
@@ -239,8 +172,6 @@ SS12D00-G3 slider switch inline with battery ground wire.
 <br/>
 
 ## Circuit
-
-<br/>
 
 ```
 LiPo (+) ─────────────────────────── ESP32-S3 BAT+
@@ -264,49 +195,16 @@ PDM Mic  ── [Built-in]      ──────── ESP32-S3 PDM pins (GPIO
 <table>
 <tr>
 <td align="center" width="50%">
-<img src="Assest/3D PARTS/INSIDE VIEW/EXPLODED VIEW.png" width="100%"/>
-<br/><sub>Exploded — assembly order</sub>
-</td>
-<td align="center" width="50%">
 <img src="Assest/3D PARTS/INSIDE VIEW/EXPLODED VIEW 2.png" width="100%"/>
-<br/><sub>Exploded — component fit</sub>
-</td>
-</tr>
-<tr>
-<td align="center" width="50%">
-<img src="Assest/3D PARTS/INSIDE VIEW/THE 3D CASE VERSION ONE.png" width="100%"/>
-<br/><sub>Case v1.0</sub>
+<br/><sub>Exploded — component fit &amp; assembly order</sub>
 </td>
 <td align="center" width="50%">
 <img src="Assest/3D PARTS/INSIDE VIEW/TOP VIEW.png" width="100%"/>
-<br/><sub>Top view — full assembly</sub>
+<br/><sub>Top view — full assembly layout</sub>
 </td>
 </tr>
 </table>
 
-</div>
-
-<br/>
-
-Component positions inside the case:
-
-<div align="center">
-<table>
-<tr>
-<td align="center" width="33%">
-<img src="Assest/3D PARTS/base chipset of esp32 s3 sence .png" width="100%"/>
-<br/><sub>ESP32-S3 position</sub>
-</td>
-<td align="center" width="33%">
-<img src="Assest/3D PARTS/camera module.png" width="100%"/>
-<br/><sub>Camera mount</sub>
-</td>
-<td align="center" width="33%">
-<img src="Assest/3D PARTS/memory card and camera extension.png" width="100%"/>
-<br/><sub>SD + camera extension</sub>
-</td>
-</tr>
-</table>
 </div>
 
 <br/>
@@ -718,6 +616,6 @@ Built on the ESP32-S3 Sense. Designed to be extended.
 
 <br/>
 
-<img src="Assest/MAIN/the neckless.png" alt="AURA" width="100px"/>
+<img src="Assest/MAIN/the neckless.png" alt="AURA pendant" width="90px"/>
 
 </div>
