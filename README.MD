@@ -43,7 +43,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 <div align="center">
 
-<img src="Assest/MAIN/the  diagram .png" alt="System architecture diagram" width="92%"/>
+<img src="Assest/MAIN/diagram.jpg" alt="System architecture diagram" width="92%"/>
 
 </div>
 
