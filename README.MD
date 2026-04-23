@@ -130,12 +130,12 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 | Component | Spec | Qty | Cost | Link |
 |:---|:---|:---:|:---:|:---|
-| XIAO ESP32-S3 Sense | MCU + Camera + Mic | 1 | ~$15 | [Seeed Studio](https://www.seeedstudio.com/Seeed-XIAO-ESP32S3-Sense-p-5639.html) |
-| LiPo Battery 250mAh | 3.7V flat type | 2 | ~$8 | [Amazon](https://www.amazon.com) |
-| Slider Switch | SS12D00-G3, 3mm | 1 | ~$1 | [Amazon](https://www.amazon.com/dp/B099MRCDG8) |
-| Wire | 28 AWG silicone | 1 set | ~$5 | [Amazon](https://www.amazon.com/dp/B09X4629C1) |
+| XIAO ESP32-S3 Sense | MCU + Camera + Mic | 1 | ~$15 | [Seeed Studio](https://www.seeedstudio.com/XIAO-ESP32S3-Sense-p-5639.html) |
+| LiPo Battery 350mAh | 3.7V single cell | 2 | ~$8 | [Robu.in](https://robu.in/product/wly751535-350mah-3-7v-single-cell-rechargeable-lipo-battery) |
+| Slider Switch | 4mm SPDT 1P2T slide | 1 | ~$1 | [Robu.in](https://robu.in/product/4mm-spdt-1p2t-slide-switch-pack-of-10) |
+| Wire | 28 AWG silicone, flexible | 1 set | ~$5 | [Amazon](https://www.amazon.com/s?k=BNTECHGO+28+AWG+silicone+wire) |
 | 3D Printed Case | PLA/PETG, STL included | 1 | ~$3 | [Print or order](#3d-enclosure) |
-| Necklace cord | 2–3mm, any length | 1 | ~$2 | Craft store |
+| Necklace cord | 2–3mm, any length | 1 | ~$2 | [Amazon](https://www.amazon.com/s?k=waxed+cord+necklace+2mm+black) |
 
 > Order 2 extra batteries. LiPo capacity varies by batch.
 
