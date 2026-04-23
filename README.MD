@@ -124,7 +124,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 **Total: ~$60 USD**
 
 <div align="center">
-<img src="Assest/CIRCUIT DIAGRAM/ALL COMPONENTS.png" alt="All components laid out" width="72%"/>
+<img src="Assest/MAIN/Document.png" alt="All components laid out" width="72%"/>
 </div>
 
 <br/>
