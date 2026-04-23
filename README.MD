@@ -46,11 +46,13 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 - [Mobile App](#mobile-app)
 - [Bill of Materials](#bill-of-materials)
 - [Hardware](#hardware)
+  - [Specs](#xiao-esp32-s3-sense-specs)
+  - [Battery System](#battery-system)
 - [Circuit](#circuit)
 - [3D Enclosure](#3d-enclosure)
 - [Build Guide](#build-guide)
   - [1 — Firmware](#1--firmware)
-  - [2 — Mobile App](#2--mobile-app)
+  - [2 — Mobile App Setup](#2--mobile-app-setup)
   - [3 — Backend](#3--backend)
   - [4 — Local / Private Mode](#4--local--private-mode)
 - [AI Provider Reference](#ai-provider-reference)
@@ -175,7 +177,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 <br/>
 
-**XIAO ESP32-S3 Sense specs:**
+### XIAO ESP32-S3 Sense Specs
 
 | | |
 |:---|:---|
@@ -188,7 +190,7 @@ AURA is a pendant you wear around your neck. It continuously captures audio and 
 
 <br/>
 
-**Battery system:**
+### Battery System
 
 2× 250mAh in parallel = **500mAh total**
 
@@ -378,7 +380,7 @@ Expected output:
 
 <br/>
 
-### 2 — Mobile App
+### 2 — Mobile App Setup
 
 **Build from source (Android):**
 
